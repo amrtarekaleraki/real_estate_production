@@ -48,7 +48,7 @@
                             {{-- @foreach ($settings as $item)
                               <img src="{{ asset($item->logo) }}" class="logo-icon" alt="logo icon" />
                             @endforeach --}}
-                                <img src="{{ asset('adminbackend/assets/images/new/logo.png')}}" alt="" style="background-color: #18697A;">
+                                <img src="{{ asset('adminbackend/assets/images/new/Logo.png')}}" alt="" style="background-color: #18697A;">
 								<h2>تسجيل الدخول</h2>
 							</div>
 
