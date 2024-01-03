@@ -45,10 +45,10 @@
                                 $settings = App\Models\Setting::latest()->get();
                             @endphp
 
-                            @foreach ($settings as $item)
+                            {{-- @foreach ($settings as $item)
                               <img src="{{ asset($item->logo) }}" class="logo-icon" alt="logo icon" />
-                            @endforeach
-                                {{-- <img src="{{ asset('adminbackend/assets/images/new/logo2.png')}}" alt="" style="background-color: #18697A;"> --}}
+                            @endforeach --}}
+                                <img src="{{ asset('adminbackend/assets/images/new/logo2.png')}}" alt="" style="background-color: #18697A;">
 								<h2>تسجيل الدخول</h2>
 							</div>
 
