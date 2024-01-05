@@ -2336,6 +2336,7 @@ textarea.form-control-lg {
 	vertical-align: middle;
 	cursor: pointer;
 	-webkit-user-select: none;
+	/* -moz-user-select: none; */
 	-moz-user-select: none;
 	user-select: none;
 	background-color: transparent;
