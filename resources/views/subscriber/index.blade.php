@@ -6,7 +6,8 @@
 <style>
     .chart-bar-design
     {
-        background-color: rgb(240, 240, 240);
+        background:#FFF;
+        box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
     }
 </style>
 
@@ -19,9 +20,7 @@
       <div class="col">
         <div class="card radius-10 card2">
           <div class="card-body">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0 text-white">${{ $sellingContractPrice }}</h5>
-              <div class="ms-auto icon-circle-1">
+            <div class="icon-circle-1 mb-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -35,24 +34,16 @@
                   />
                 </svg>
               </div>
+            <div class="d-flex align-items-center mb-2">
+              <h5 class="mb-0 text-white">{{ $sellingContractPrice }}$</h5>
             </div>
-            <div
-              class="progress my-3 bg-light-transparent"
-              style="height: 3px"
-            >
-              <div
-                class="progress-bar bg-white"
-                role="progressbar"
-                style="width: 55%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-            <div class="d-flex align-items-center text-white">
+
+            <div class="d-flex align-items-center text-white gap-3">
               <p class="mb-0">إجمالي المبيعات</p>
-              <p class="mb-0 ms-auto">
-                {{-- +5.2%<span><i class="bx bx-up-arrow-alt"></i></span> --}}
+              <p class="mb-0 card-percentage">
+                5%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9.00007 10.4356L12.5947 14.0303L13.6554 12.9697L9.00007 8.31435L4.34473 12.9697L5.40538 14.0303L9.00007 10.4356ZM4.50006 5.25H13.5001V6.75H4.50006V5.25Z" fill="#09BC30"/>
+                    </svg></span>
               </p>
             </div>
           </div>
@@ -62,9 +53,7 @@
       <div class="col">
         <div class="card radius-10 card3">
           <div class="card-body">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0 text-white">${{ $rentingContractPrice }}</h5>
-              <div class="ms-auto icon-circle-2">
+            <div class="icon-circle-2 mb-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -78,24 +67,16 @@
                   />
                 </svg>
               </div>
+            <div class="d-flex align-items-center mb-2">
+              <h5 class="mb-0 text-white">{{ $rentingContractPrice }}$</h5>
             </div>
-            <div
-              class="progress my-3 bg-light-transparent"
-              style="height: 3px"
-            >
-              <div
-                class="progress-bar bg-white"
-                role="progressbar"
-                style="width: 55%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-            <div class="d-flex align-items-center text-white">
+
+            <div class="d-flex align-items-center text-white gap-3">
               <p class="mb-0">إجمالي الايجارات</p>
-              <p class="mb-0 ms-auto">
-                {{-- +2.2%<span><i class="bx bx-up-arrow-alt"></i></span> --}}
+              <p class="mb-0 card-percentage">
+                5%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9.00007 10.4356L12.5947 14.0303L13.6554 12.9697L9.00007 8.31435L4.34473 12.9697L5.40538 14.0303L9.00007 10.4356ZM4.50006 5.25H13.5001V6.75H4.50006V5.25Z" fill="#09BC30"/>
+                    </svg></span>
               </p>
             </div>
           </div>
@@ -105,9 +86,7 @@
       <div class="col">
         <div class="card radius-10 card1">
           <div class="card-body">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0 text-white">${{ $monthContractPrice }}</h5>
-              <div class="ms-auto icon-circle-3">
+            <div class="icon-circle-3 mb-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -121,24 +100,16 @@
                   />
                 </svg>
               </div>
+            <div class="d-flex align-items-center mb-2">
+              <h5 class="mb-0 text-white">{{ $monthContractPrice }}$</h5>
             </div>
-            <div
-              class="progress my-3 bg-light-transparent"
-              style="height: 3px"
-            >
-              <div
-                class="progress-bar bg-white"
-                role="progressbar"
-                style="width: 55%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-            <div class="d-flex align-items-center text-white">
+
+            <div class="d-flex align-items-center text-white gap-3">
               <p class="mb-0">إجمالي الشهر</p>
-              <p class="mb-0 ms-auto">
-                {{-- +1.2%<span><i class="bx bx-up-arrow-alt"></i></span> --}}
+              <p class="mb-0 card-percentage">
+                5%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9.00007 10.4356L12.5947 14.0303L13.6554 12.9697L9.00007 8.31435L4.34473 12.9697L5.40538 14.0303L9.00007 10.4356ZM4.50006 5.25H13.5001V6.75H4.50006V5.25Z" fill="#09BC30"/>
+                    </svg></span>
               </p>
             </div>
           </div>
@@ -149,18 +120,26 @@
     <!--end row-->
 
 
-    <h6 class="mb-2 mt-5 text-uppercase table-title">العقارات</h6>
+    <h6 class="mb-2 mt-5 text-uppercase table-title">جدول العقارات</h6>
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
             <div class="exports d-flex mb-3" style="gap: 10px;">
-                <a href="{{ route('export.subscribers.building.pdf') }}" class="btn btn-info">PDF</a>
+                <a href="{{ route('export.subscribers.building.pdf') }}" class="btn" style="border-radius: 4px;background: #57B0E2;color:#FFF;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M0.833496 12.0837C0.833496 10.1433 1.85374 8.44124 3.38705 7.48466C3.80407 4.20366 6.60588 1.66699 10.0002 1.66699C13.3944 1.66699 16.1962 4.20366 16.6132 7.48466C18.1466 8.44124 19.1668 10.1433 19.1668 12.0837C19.1668 14.935 16.9637 17.2717 14.1668 17.4846L5.8335 17.5003C3.03665 17.2717 0.833496 14.935 0.833496 12.0837ZM14.0404 15.8227C15.9849 15.6747 17.5002 14.0471 17.5002 12.0837C17.5002 10.7728 16.8238 9.58049 15.7311 8.89874L15.0597 8.47983L14.9599 7.69481C14.6447 5.21535 12.5242 3.33366 10.0002 3.33366C7.47613 3.33366 5.35555 5.21535 5.04041 7.69481L4.94063 8.47983L4.26923 8.89874C3.17646 9.58049 2.50016 10.7728 2.50016 12.0837C2.50016 14.0471 4.01544 15.6747 5.95991 15.8227L6.10433 15.8337H13.896L14.0404 15.8227ZM10.8335 10.8337V14.167H9.16683V10.8337H6.66683L10.0002 6.66699L13.3335 10.8337H10.8335Z" fill="white"/>
+                        </svg>
+                        تصدير
+                </a>
             </div>
           <table id="example" class="table table-striped table-bordered">
             <thead>
-              <tr>
+              <tr style="font-family: Cairo;font-size: 18px;font-style: normal;font-weight: 600;line-height: 120%;color:#1B1B1B;">
                 <th>اسم العقار</th>
+                <th>قيمه العقد</th>
+                <th>تاريخ التحصيل</th>
                 <th>العنوان</th>
+                <th>صوره العقد</th>
                 <th>الحاله</th>
                 <th>العمليات</th>
               </tr>
@@ -174,7 +153,14 @@
                  {{ $item->building_title }}
 
                 </td>
+                <td>${{ $item->contract_price }}</td>
+                <td>{{ $item->contract_date }}</td>
                 <td>{{ $item->building_location }}</td>
+                <td>
+                    <a href="{{ asset($item->contract_img)}}" download="صوره العقد">
+                        <img src="{{ asset('adminbackend/assets/images/new/contract-photo.png') }}" style="width: 50px; height:30px;">
+                    </a>
+                </td>
                 <td>{{ $item->building_avilability_status === 'empty' ? 'خالي' : "غير خالي" }}</td>
                 <td>
                     <div class="operations">

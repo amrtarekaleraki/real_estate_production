@@ -25,12 +25,12 @@
                         <label for="file-input" class="profile-settings-img-parent">
                             <img id="preview-image" src="{{ (!empty($adminData->photo)) ? url('upload/admin_images/'.$adminData->photo)  : url('upload/no_image.jpg') }}" alt="Profile Image">
                             <div class="profile-settings-upload-img">
-                                <span style="color: black;">ارفع الصوره</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                  <path d="M7.21875 7.00598L10.5 3.72559L13.7812 7.00598" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                  <path d="M10.5 12.4752V3.72754" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                  <path d="M17.375 12.4756V16.8506C17.375 17.0163 17.3092 17.1753 17.1919 17.2925C17.0747 17.4097 16.9158 17.4756 16.75 17.4756H4.25C4.08424 17.4756 3.92527 17.4097 3.80806 17.2925C3.69085 17.1753 3.625 17.0163 3.625 16.8506V12.4756" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M7.21875 7.00598L10.5 3.72559L13.7812 7.00598" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M10.5 12.4752V3.72754" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M17.375 12.4756V16.8506C17.375 17.0163 17.3092 17.1753 17.1919 17.2925C17.0747 17.4097 16.9158 17.4756 16.75 17.4756H4.25C4.08424 17.4756 3.92527 17.4097 3.80806 17.2925C3.69085 17.1753 3.625 17.0163 3.625 16.8506V12.4756" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
+                                <span style="color: white;">ارفع الصوره</span>
                           </div>
                         </label>
                         <input type="file" name="photo" id="file-input" style="display: none">

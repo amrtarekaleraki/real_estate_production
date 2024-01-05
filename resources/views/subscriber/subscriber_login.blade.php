@@ -34,19 +34,19 @@
 
 
 
-                  <div class="container">
+                  <div class="container" style="max-width:100%;">
 					 <div class="row">
 
 						 <div class="col-lg-4 login-sidebar">
 							<div class="login-side-logo" >
-                            @php
+                            {{-- @php
                                 $settings = App\Models\Setting::latest()->get();
                             @endphp
 
                             @foreach ($settings as $item)
                               <img src="{{ asset($item->logo) }}" class="logo-icon" alt="logo icon" />
-                            @endforeach
-                                {{-- <img src="{{ asset('adminbackend/assets/images/new/logo2.png')}}" alt="" style="background-color: #18697A;"> --}}
+                            @endforeach --}}
+                            <img src="{{ asset('adminbackend/assets/images/new/Logo.png')}}">
 								<h2>تسجيل دخول المشتركين</h2>
 							</div>
 
@@ -67,28 +67,27 @@
                                     @endif
 
 
-									<div class="col-12">
-										<label for="inputEmailAddress" class="form-label">البريد الالكتروني</label>
-										<input id="email" name="email" type="email" class="form-control" id="inputEmailAddress">
-									</div>
+                                    <div class="parent-login-update">
+                                        <div class="col-8">
+                                            <label for="inputEmailAddress" class="form-label">البريد الالكتروني</label>
+                                            <input id="email" name="email" type="email" class="form-control" id="inputEmailAddress" placeholder="example@gmail.com">
+                                        </div>
 
+                                        <div class="col-8">
+                                            <label for="password" class="form-label">الرقم السري</label>
+                                            <div class="input-group password-button" id="show_hide_password">
+                                                <input name="password" type="password" class="form-control" id="password" placeholder="123asd">
+                                                <a href="javascript:;" class="password-eye"><i class='bx bx-show'></i></a>
+                                            </div>
+                                        </div>
 
-									<div class="col-12">
-										<label for="password" class="form-label">الرقم السري</label>
-										<div class="input-group password-button" id="show_hide_password">
-										    <input name="password" type="password" class="form-control" id="password">
-											<a href="javascript:;" class="password-eye"><i class='bx bx-show'></i></a>
-										</div>
-									</div>
+                                        <div class="col-8">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn mt-5 button-submit m-auto">تسجيل الدخول</button>
+                                            </div>
+                                        </div>
 
-
-
-
-									<div class="col-12">
-										<div class="d-grid">
-											<button type="submit" class="btn mt-5 button-submit w-75 m-auto">تسجيل الدخول</button>
-										</div>
-									</div>
+                               </div>
 
 
 

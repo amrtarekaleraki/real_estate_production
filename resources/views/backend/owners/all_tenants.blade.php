@@ -5,9 +5,13 @@
 
 
 <div class="page-content">
+
+    <div class="all-files">
+
+
     <!--breadcrumb-->
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3" style="border-left:none;">كل المستأجرين </div>
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3 p-2">
+        <div class="breadcrumb-title pe-3" style="border-left:none; font-family: Cairo;font-size: 23px;font-style: normal;font-weight: 600;line-height: 120%;color:#1B1B1B;">كل المستأجرين </div>
 
         <div class="ms-auto">
             <div class="btn-group">
@@ -20,7 +24,6 @@
     </div>
     <!--end breadcrumb-->
 
-    <hr/>
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -98,6 +101,7 @@
 
 </div>
 
+</div>
 
 
 <script>

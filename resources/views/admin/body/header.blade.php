@@ -119,7 +119,12 @@
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{ (!empty($adminData->photo)) ? url('upload/admin_images/'.$adminData->photo):url('upload/no_image.jpg') }}" class="user-img" alt="user avatar">
                     <div class="user-info ps-3 header-user-name">
-                        <p class="user-name mb-0">{{ Auth::user()->name}}</p>
+                        <p class="user-name mb-0">
+                            {{ Auth::user()->name}}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                <path d="M8.99978 10.3785L12.7121 6.66626L13.7728 7.72692L8.99978 12.4999L4.22681 7.72692L5.28747 6.66626L8.99978 10.3785Z" fill="black"/>
+                            </svg>
+                        </p>
                         <p class="designattion mb-0">{{ Auth::user()->role}}</p>
                     </div>
                 </a>

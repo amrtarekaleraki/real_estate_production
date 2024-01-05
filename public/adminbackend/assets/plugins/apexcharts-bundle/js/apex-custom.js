@@ -70,8 +70,8 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart1"), options);
 	chart.render();
-	
-	
+
+
 	// chart 2
 	var optionsLine = {
 		chart: {
@@ -139,16 +139,13 @@ $(function () {
 	}
 	var chartLine = new ApexCharts(document.querySelector('#chart2'), optionsLine);
 	chartLine.render();
-	
-	
+
+
 	// chart 3
 	var options = {
 		series: [{
 			name: 'series1',
 			data: [31, 40, 68, 31, 92, 55, 100]
-		}, {
-			name: 'series2',
-			data: [11, 82, 45, 80, 34, 52, 41]
 		}],
 		chart: {
 			foreColor: '#9ba7b2',
@@ -188,7 +185,7 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart3"), options);
 	chart.render();
-	
+
 	// chart 4
 	var options = {
 		series: [{
@@ -250,8 +247,8 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart4"), options);
 	chart.render();
-	
-	
+
+
 	// chart 5
 	var options = {
 		series: [{
@@ -279,8 +276,8 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart5"), options);
 	chart.render();
-	
-	
+
+
 	// chart 6
 	var options = {
 		series: [{
@@ -338,8 +335,8 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart6"), options);
 	chart.render();
-	
-	
+
+
 	// chart 7
 	var options = {
 		series: [{
@@ -416,18 +413,18 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart7"), options);
 	chart.render();
-	
-	
+
+
 	// chart 8
 	var options = {
-		series: [44, 55, 13, 43, 22],
+		series: [45, 25, 35, 15],
 		chart: {
 			foreColor: '#9ba7b2',
 			height: 330,
 			type: 'pie',
 		},
-		colors: ["#0d6efd", "#6c757d", "#17a00e", "#f41127", "#ffc107"],
-		labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+		colors: ["#EFF4FB", "#6AD2FF", "#4318FF", "#FED64A"],
+		labels: ['الاستثماري', 'التجاري', 'الاراضي', 'السكني'],
 		responsive: [{
 			breakpoint: 480,
 			options: {
@@ -442,8 +439,8 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart8"), options);
 	chart.render();
-	
-	
+
+
 	// chart 9
 	var options = {
 		series: [44, 55, 41, 17, 15],
@@ -467,8 +464,8 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart9"), options);
 	chart.render();
-	
-	
+
+
 	// chart 10
 	var options = {
 		series: [{
@@ -511,8 +508,8 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart10"), options);
 	chart.render();
-	
-	
+
+
 	// chart 11
 	var options = {
 		series: [{
@@ -573,11 +570,11 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart11"), options);
 	chart.render();
-	
-	
-	
+
+
+
 	// chart 12
-	
+
 	var options = {
           series: [70],
           chart: {
@@ -597,11 +594,11 @@ $(function () {
 
         var chart = new ApexCharts(document.querySelector("#chart12"), options);
         chart.render();
-		
-		
-		
+
+
+
 	// chart 13
-	
+
 	var options = {
           series: [44, 55, 67, 83],
           chart: {
@@ -620,23 +617,34 @@ $(function () {
               },
               total: {
                 show: true,
-                label: 'Total',
+                label: '',
                 formatter: function (w) {
                   // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                  return 249
+                //   return 249
                 }
               }
             }
           }
         },
-		colors: ["#0d6efd", "#17a00e", "#f41127", "#ffc107"],
-        labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
+		colors: ["#165DFF", "#30C9C9", "#F7BA1E", "#66B949"],
+        labels: ['العقارات المباعه', 'الكل', 'المصروف', 'العقارات المستاجره'],
+            // Add this to set the title
+        title:{
+            text:'ملخص المبيعات',
+            align:'center',
+            style:{
+                color:'#1B1B1B',
+                fontSize:'23px',
+                fontFamily:'Cairo',
+                fontWeight:'500',
+            }
+         }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart13"), options);
         chart.render();
-		
-		
-	
-	
+
+
+
+
 });

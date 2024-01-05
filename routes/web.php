@@ -17,6 +17,7 @@ use App\Http\Controllers\Subscriber\SubscriberBuildingController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Backend\BuildingController;
+use App\Http\Controllers\Backend\ReportsController;
 use App\Http\Controllers\Backend\RoleController;
 
 //////////////// Home //////////////////////////////////////
@@ -208,6 +209,11 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('export/subscribers/pdf', 'subscribersPdf')->name('export.subscribers.pdf');
     });
 
+
+    //////////////// reports  /////////////////////////
+    Route::controller(ReportsController::class)->group(function(){
+        Route::get('admin/all/reports', 'AllReport')->name('all.report');
+    });
 
 
 

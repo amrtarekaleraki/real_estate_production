@@ -43,9 +43,10 @@
                         </div>
 
 
-                        <div class="form-group col-lg-6 add-buildings-inputs">
-                            <label>الشعار</label>
-                            <div class="custom-file-upload">
+                        <div class="col-lg-6" style="display: flex; align-items:center;gap:40px;">
+
+                            <label style="font-family:Cairo;font-size:19px;font-style:normal;font-weight:500;line-height:120%;color:#1B1B1B;">الشعار</label>
+                            {{-- <div class="custom-file-upload">
                                 <input type="file" id="logo" class="input-file" name="logo" onchange="previewImage(event)">
                                 <label for="logo" class="custom-file-upload-label">
                                     <span class="custom-file-upload-svg">
@@ -65,13 +66,24 @@
                                 @if ($errors->has('logo'))
                                    <span class="text-danger">{{ $errors->first('logo') }}</span>
                                 @endif
+                            </div> --}}
+
+                            <div class="mb-3" style="border:1px solid #D4D4D4;">
+                                <label for="logo" class="form-label"></label>
+                                <input type="file" id="logo" name="logo" style="display: none;" onchange="previewImage(event)">
+                                <img id="preview" src="{{ asset($setting->logo) }}" style="width:100px; height:100px"
+                                     onclick='document.getElementById("logo").click()'>
+                                @if ($errors->has('logo'))
+                                   <span class="text-danger">{{ $errors->first('logo') }}</span>
+                                @endif
                             </div>
+
                         </div>
 
 
-                        <div class="form-group col-lg-6 add-buildings-inputs">
-                            <label>الفيف ايقون</label>
-                            <div class="custom-file-upload">
+                        <div class="col-lg-6" style="display: flex; align-items:center;gap:40px;">
+                            <label style="font-family:Cairo;font-size:19px;font-style:normal;font-weight:500;line-height:120%;color:#1B1B1B;">الفيف ايقون</label>
+                            {{-- <div class="custom-file-upload">
                                 <input type="file" id="favicon" class="input-file" name="favicon" onchange="previewImage2(event)">
                                 <label for="favicon" class="custom-file-upload-label">
                                     <span class="custom-file-upload-svg">
@@ -91,7 +103,19 @@
                                 @if ($errors->has('favicon'))
                                    <span class="text-danger">{{ $errors->first('favicon') }}</span>
                                 @endif
+                            </div> --}}
+
+
+                            <div class="mb-3" style="border:1px solid #D4D4D4;">
+                                <label for="favicon" class="form-label"></label>
+                                <input type="file" id="favicon" name="favicon" style="display: none;" onchange="previewImage2(event)">
+                                <img id="preview2" src="{{ asset($setting->favicon) }}" style="width:100px; height:100px"
+                                     onclick='document.getElementById("favicon").click()'>
+                                @if ($errors->has('favicon'))
+                                   <span class="text-danger">{{ $errors->first('favicon') }}</span>
+                                @endif
                             </div>
+
                         </div>
 
 
@@ -125,25 +149,46 @@
 
 
 <script>
+    // function previewImage(event) {
+    //     var reader = new FileReader();
+    //     reader.onload = function () {
+    //         var output = document.getElementById('preview');
+    //         output.src = reader.result;
+    //     };
+    //     reader.readAsDataURL(event.target.files[0]);
+    // }
+
+
     function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('preview');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('preview');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
     }
+
 </script>
 
 <script>
+    // function previewImage2(event) {
+    //     var reader = new FileReader();
+    //     reader.onload = function () {
+    //         var output = document.getElementById('preview2');
+    //         output.src = reader.result;
+    //     };
+    //     reader.readAsDataURL(event.target.files[0]);
+    // }
+
     function previewImage2(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('preview2');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    }
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('preview2');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
 </script>
 
 

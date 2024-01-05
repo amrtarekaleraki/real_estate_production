@@ -17,7 +17,7 @@ body {
   font-size: 14px;
   color: #4c5258;
   letter-spacing: 0.5px;
-  background-color: #fff;
+  background: #FEFDFD;
   overflow-x: hidden;
   font-family: Cairo, sans-serif;
 }
@@ -84,10 +84,10 @@ a {
   right: 250px;
   left: 0;
   height: 60px;
-  background: #fff;
-  border-bottom: 1px solid rgb(228 228 228 / 0%);
+  background: #FEFDFD;
+  /* border-bottom: 1px solid rgb(228 228 228 / 0%); */
   z-index: 10;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  /* box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; */
 }
 
 .topbar .navbar {
@@ -1925,9 +1925,9 @@ input.search-control-2::placeholder {
 }
 
 .user-img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+  width: 55px;
+  height: 50px;
+  border-radius: 6px;
   border: 0 solid #e5e5e5;
   padding: 0;
 }
@@ -2442,6 +2442,27 @@ input.search-control-2::placeholder {
 
 /* ///////////////////  Login Page Edit //////////////////////////////////// */
 
+
+.parent-login-update
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+.parent-login-update input
+{
+    border-radius: 5px;
+}
+
+.parent-login-update button
+{
+    width: 100%;
+    padding: 8px;
+}
+
+
 .login-img {
   background: #fafafa;
   height: 100vh;
@@ -2477,12 +2498,12 @@ input.search-control-2::placeholder {
 }
 
 .login-side-logo h2 {
-  color: #030229;
-  font-family: Cairo;
-  font-size: 26px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%; /* 31.2px */
+    color: #030229;
+    font-family: Cairo;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
 }
 
 .form-login-page  {
@@ -2490,12 +2511,12 @@ input.search-control-2::placeholder {
 }
 
 .form-login-page label {
-  color: #030229;
-  font-family: Cairo;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+    color:#030229;
+    font-family: Cairo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .form-login-page input {
@@ -2600,6 +2621,37 @@ input.search-control-2::placeholder {
   background: #fff;
 }
 
+/* .sidebar-wrapper .metismenu li:first-child a .parent-icon svg path {
+    fill: #489EB5 !important;
+}
+.sidebar-wrapper .metismenu li:first-child a:focus .parent-icon svg path {
+    fill: #489EB5 !important;
+}
+.sidebar-wrapper .metismenu li:first-child a:active .parent-icon svg path {
+    fill: #489EB5 !important;
+}
+.sidebar-wrapper .metismenu li:first-child a:hover .parent-icon svg path {
+    fill: #489EB5 !important;
+} */
+
+/* ////////////////////////////////////////////////////////////////////// */
+/* .sidebar-wrapper .metismenu a .parent-icon svg path
+{
+    fill: #ffffff !important;
+}
+.sidebar-wrapper .metismenu a:focus .parent-icon svg path
+{
+    fill: #489EB5 !important;
+}
+.sidebar-wrapper .metismenu a:active .parent-icon svg path
+{
+    fill: #489EB5 !important;
+}
+.sidebar-wrapper .metismenu a:hover .parent-icon svg path
+{
+    fill: #489EB5 !important;
+} */
+
 .sidebar-wrapper .metismenu ul {
   border: 1px solid #ededed;
   background: #18697a;
@@ -2627,6 +2679,19 @@ input.search-control-2::placeholder {
 	color: #151D48 !important;
 }
 
+
+.page-content-update .card-percentage
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* height: 20px; */
+    border-radius: 20px;
+    border: 1px solid #09BC30;
+    color: #09BC30 !important;
+    padding: 2px 3px;
+}
+
 .page-content-update .card1
 {
 	border-radius: 16px;
@@ -2642,7 +2707,13 @@ input.search-control-2::placeholder {
 .page-content-update .card3
 {
 	border-radius: 16px;
-background: #DCFCE7;
+    background: #DCFCE7;
+}
+
+.page-content-update .card4
+{
+	border-radius: 16px;
+    background: #FFE2E5;
 }
 
 .icon-circle-1
@@ -2676,6 +2747,18 @@ background: #DCFCE7;
 	height: 40px;
 	border-radius: 50%;
 	background-color: #FF947A;
+}
+
+
+.icon-circle-4
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #FA5A7D;
 }
 
 .categories-navs

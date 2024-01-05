@@ -195,7 +195,7 @@
         @endif
 
 
-        {{-- <li>
+        <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon">
                     <img src="{{ asset('adminbackend/assets/images/new/reports-icon.png') }}" alt="">
@@ -204,17 +204,10 @@
             </a>
             <ul>
                 <li>
-                    <a href="icons-line-icons.html"><i class="bx bx-left-arrow-alt"></i>Line Icons</a>
+                    <a href="{{ route('all.report') }}"><i class="bx bx-left-arrow-alt"></i>جميع التقارير</a>
                 </li>
-                <li>
-                    <a href="icons-boxicons.html"><i class="bx bx-left-arrow-alt"></i>Boxicons</a>
-                </li>
-                <li>
-                    <a href="icons-feather-icons.html"><i class="bx bx-left-arrow-alt"></i>Feather Icons</a>
-                </li>
-
             </ul>
-        </li> --}}
+        </li>
 
         @if(Auth::user()->can('قائمه الاعدادات'))
             <li>
@@ -355,7 +348,12 @@
                             >
                             <img src="{{ (!empty($adminData->photo)) ? url('upload/admin_images/'.$adminData->photo):url('upload/no_image.jpg') }}" class="user-img" alt="user avatar">
                               <div class="user-info ps-3 header-user-name">
-                                <p class="user-name mb-0">{{ Auth::user()->name}}</p>
+                                <p class="user-name mb-0">
+                                    {{ Auth::user()->name}}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                        <path d="M8.99978 10.3785L12.7121 6.66626L13.7728 7.72692L8.99978 12.4999L4.22681 7.72692L5.28747 6.66626L8.99978 10.3785Z" fill="black"/>
+                                    </svg>
+                                </p>
                                 <p class="designattion mb-0">{{ Auth::user()->role}}</p>
                               </div>
                             </a>
