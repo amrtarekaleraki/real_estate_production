@@ -4,9 +4,11 @@
 
 
 <div class="page-content">
+
+    <div class="all-files">
     <!--breadcrumb-->
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3" style="border-left:none;">كل المستأجرين و الملاك</div>
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3 p-2">
+        <div class="breadcrumb-title pe-3" style="border-left:none; font-family: Cairo;font-size: 23px;font-style: normal;font-weight: 600;line-height: 120%;color:#1B1B1B;">كل المستأجرين و الملاك</div>
 
         <div class="ms-auto">
             <div class="btn-group">
@@ -18,7 +20,6 @@
     </div>
     <!--end breadcrumb-->
 
-    <hr/>
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -66,7 +67,7 @@
 
 
     <td>
-<a href="{{ route('subscriber.edit.owner',$item->id) }}" class="btn btn-info">تعديل</a>
+<a href="{{ route('subscriber.edit.owner',$item->id) }}" class="btn" style="background-color:#489EB5;color:#FFF;">تعديل</a>
 <a href="{{ route('subscriber.delete.owner',$item->id) }}" class="btn btn-danger" id="delete">حذف</a>
     </td>
 </tr>
@@ -82,6 +83,8 @@
     </div>
 
 
+
+</div>
 
 </div>
 

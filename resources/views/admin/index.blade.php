@@ -3,6 +3,9 @@
 @section('admin')
 
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
 <style>
     .chart-bar-design
     {
@@ -43,7 +46,7 @@
 
 
               <div class="d-flex align-items-center mb-2">
-              <h5 class="mb-0 text-white">{{ $sellingContractPrice }}$</h5>
+              <h5 class="mb-0 text-white">{{ $sellingContractPrice }}kwd</h5>
             </div>
 
 
@@ -93,7 +96,7 @@
                 </svg>
               </div>
             <div class="d-flex align-items-center mb-2">
-              <h5 class="mb-0 text-white">{{ $rentingContractPrice }}$</h5>
+              <h5 class="mb-0 text-white">{{ $rentingContractPrice }}kwd</h5>
             </div>
 
             <div class="d-flex align-items-center text-white gap-3">
@@ -126,7 +129,7 @@
                 </svg>
               </div>
             <div class="d-flex align-items-center mb-2">
-              <h5 class="mb-0 text-white">{{ $monthContractPrice }}$</h5>
+              <h5 class="mb-0 text-white">{{ $monthContractPrice }}kwd</h5>
             </div>
 
             <div class="d-flex align-items-center text-white gap-3">
@@ -202,12 +205,12 @@
                   <img src="{{ asset($item->building_cover_img)}}" width="40" height="35">
                  {{ $item->building_title }}
                 </td>
-                <td>${{ $item->contract_price }}</td>
+                <td>{{ $item->contract_price }}kwd</td>
                 <td>{{ $item->contract_date }}</td>
                 <td>{{ $item->building_location }}</td>
                 <td>
                     <a href="{{ asset($item->contract_img)}}" download="صوره العقد">
-                        <img src="{{ asset('adminbackend/assets/images/new/contract-photo.png') }}" style="width: 50px; height:30px;">
+                        <img src="{{ asset('adminbackend/assets/images/new/contract-photo.png') }}" style="width: 31px; height:31px;">
                     </a>
                 </td>
                 <td>{{ $item->building_avilability_status === 'empty' ? 'خالي' : "غير خالي" }}</td>
@@ -266,23 +269,28 @@
     @if(Auth::user()->can('الرسوم البيانيه'))
     <div class="container">
         <div class="row">
-
             <div class="col-lg-6">
-                <div class="card" style="background:#FFF;box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);height: 100%;">
+                <div class="card page-content-update" style="background:#FFF;box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);height: 100%;">
                     <h2 class="p-2" style="color:#1B1B1B;font-family:Cairo;font-size:23px;font-style:normal;font-weight: 700;line-height: 120%; text-align:center;">العقارات</h2>
                     <div class="card-body">
-                        <div id="chart8"></div>
+                        <div id="chart888"></div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-6">
-                <div class="chart-bar-design">
+                <div class="chart-bar-design page-content-update">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
         </div>
         <!--end row-->
+        <div class="row mt-4">
+            <div class="col-lg-12 page-content-update">
+                <h2 style="font-family:Cairo;font-size: 23px;font-style: normal;font-weight: 500;line-height: 120%;color:#1B1B1B);">إحصائيه الايجارات</h2>
+                <div id="chart999"></div>
+            </div>
+        </div>
      </div>
      @endif
 
@@ -352,6 +360,80 @@
 </script>
 
 
+
+<script>
+        var options = {
+        series: [45, 25, 35, 15],
+        chart: {
+            foreColor: '#9ba7b2',
+            height: 330,
+            type: 'pie',
+        },
+        colors: ["#EFF4FB", "#6AD2FF", "#4318FF", "#FED64A"],
+        labels: ['الاستثماري', 'التجاري', 'الاراضي', 'السكني'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    height: 360
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#chart888"), options);
+    chart.render();
+</script>
+
+
+
+<script>
+    var options = {
+		series: [{
+			name: 'series1',
+			data: [31, 40, 68, 31, 92, 55, 100]
+		}],
+		chart: {
+			foreColor: '#9ba7b2',
+			height: 360,
+			type: 'area',
+			zoom: {
+				enabled: false
+			},
+			toolbar: {
+				show: true
+			},
+		},
+		colors: ["#0d6efd", '#f41127'],
+		title: {
+			text: 'Area Chart',
+			align: 'left',
+			style: {
+				fontSize: "16px",
+				color: '#666'
+			}
+		},
+		dataLabels: {
+			enabled: false
+		},
+		stroke: {
+			curve: 'smooth'
+		},
+		xaxis: {
+			type: 'datetime',
+			categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+		},
+		tooltip: {
+			x: {
+				format: 'dd/MM/yy HH:mm'
+			},
+		},
+	};
+	var chart = new ApexCharts(document.querySelector("#chart999"), options);
+	chart.render();
+</script>
 
 
 @endsection

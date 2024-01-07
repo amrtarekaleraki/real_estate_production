@@ -103,6 +103,21 @@
 
 
                 <li>
+                    <a class="has-arrow">
+                        <div class="parent-icon">
+                            <img src="{{ asset('adminbackend/assets/images/new/reports-icon.png') }}" alt="">
+                        </div>
+                        <div class="menu-title">التقارير و الاحصائيات</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('subscriber.all.report') }}"><i class="bx bx-left-arrow-alt"></i>جميع التقارير و الاحصائيات</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
               </ul>
               <!--end navigation-->
             </div>

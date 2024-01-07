@@ -11,7 +11,11 @@ File: app.css
 */
 
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Montserrat:ital,wght@0,100;0,200;0,300;0,600;0,700;0,900;1,100;1,300&family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,500;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Roboto:ital,wght@0,300;0,500;0,700;0,900;1,400;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Montserrat:ital,wght@0,100;0,200;0,300;0,600;0,700;0,900;1,100;1,300&family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,500;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Roboto:ital,wght@0,300;0,500;0,700;0,900;1,400;1,700&display=swap'); */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+
 
 body {
   font-size: 14px;
@@ -19,7 +23,7 @@ body {
   letter-spacing: 0.5px;
   background: #FEFDFD;
   overflow-x: hidden;
-  font-family: Cairo, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 a {
@@ -2653,7 +2657,7 @@ input.search-control-2::placeholder {
 } */
 
 .sidebar-wrapper .metismenu ul {
-  border: 1px solid #ededed;
+  border: none;
   background: #18697a;
 }
 
@@ -2994,18 +2998,18 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
 
 .buildings-details-cover-info-card .card-info-content
 {
-  margin-top: 50% !important;
+  margin-top: 30% !important;
 }
 .buildings-details-cover-info-card img
 {
-  width: 55px;
-height: 50px;
+  width: 50%;
+height: 50%;
 border-radius: 6px;
 }
 
 .buildings-details-cover-info-card h3
 {
-  margin-top: 5px;
+  margin-top: 10px;
   color:  #1B1B1B;
 font-family: Cairo;
 font-size: 19px;

@@ -36,7 +36,7 @@
     <td>
         <img src="{{ asset($item->favicon) }}" alt="favicon" width="60" height="60">
     </td>
-    <td><a href="{{ route('edit.settings',$item->id) }}" class="btn btn-info">تعديل</a></td>
+    <td><a href="{{ route('edit.settings',$item->id) }}" class="btn" style="background-color:#489EB5;color:#FFF;">تعديل</a></td>
 </tr>
 @endforeach
 

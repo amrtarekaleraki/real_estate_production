@@ -6,6 +6,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+
 :root {
 	--bs-blue: #0d6efd;
 	--bs-indigo: #6610f2;
@@ -42,7 +44,8 @@
 }
 body {
 	margin: 0;
-	font-family: var(--bs-font-sans-serif);
+	/* font-family: var(--bs-font-sans-serif); */
+    font-family: 'Cairo', sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;
@@ -180,7 +183,8 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
 	text-decoration: none
 }
 code, kbd, pre, samp {
-	font-family: var(--bs-font-monospace);
+	/* font-family: var(--bs-font-monospace); */
+    font-family: 'Cairo', sans-serif;
 	font-size: 1em;
 	direction: ltr;
 	unicode-bidi: bidi-override
@@ -254,7 +258,8 @@ button:focus {
 }
 button, input, optgroup, select, textarea {
 	margin: 0;
-	font-family: inherit;
+	/* font-family: inherit; */
+    font-family: 'Cairo', sans-serif;
 	font-size: inherit;
 	line-height: inherit
 }
@@ -4665,7 +4670,8 @@ textarea.form-control-lg {
 	z-index: 1070;
 	display: block;
 	margin: 0;
-	font-family: var(--bs-font-sans-serif);
+	/* font-family: var(--bs-font-sans-serif); */
+    font-family: 'Cairo', sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 1.5;
@@ -4761,7 +4767,8 @@ textarea.form-control-lg {
 	z-index: 1060;
 	display: block;
 	max-width: 276px;
-	font-family: var(--bs-font-sans-serif);
+	/* font-family: var(--bs-font-sans-serif); */
+    font-family: 'Cairo', sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 1.5;
@@ -6162,7 +6169,8 @@ textarea.form-control-lg {
 	word-break: break-word!important
 }
 .font-monospace {
-	font-family: var(--bs-font-monospace)!important
+	/* font-family: var(--bs-font-monospace)!important */
+    font-family: 'Cairo', sans-serif;
 }
 .user-select-all {
 	-webkit-user-select: all!important;

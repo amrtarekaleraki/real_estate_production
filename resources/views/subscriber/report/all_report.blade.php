@@ -1,6 +1,6 @@
-@extends('admin.admin_dashboard')
+@extends('subscriber.subscriber_dashboard')
 
-@section('admin')
+@section('subscriber')
 
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -125,7 +125,7 @@
             </div>
 
             <div class="col-lg-6 page-content-update">
-                <div id="chart555"></div>
+                <div id="chart77"></div>
             </div>
 
         </div>
@@ -139,12 +139,12 @@
         <div class="row gap-5">
               <div class="col-lg-5 page-content-update">
                   <h2 style="font-family:Cairo;font-size: 23px;font-style: normal;font-weight: 500;line-height: 120%;color:#1B1B1B);">إحصائيه الايجارات</h2>
-                  <div id="chart222"></div>
+                  <div id="chart88"></div>
               </div>
 
               <div class="col-lg-6 page-content-update">
                    <h2 style="font-family:Cairo;font-size: 23px;font-style: normal;font-weight: 500;line-height: 120%;color:#1B1B1B);">إحصائيه المبيعات</h2>
-                   <div id="chart"></div>
+                   <div id="chart99"></div>
               </div>
         </div>
      </div>
@@ -305,10 +305,9 @@
                 },
             },
         };
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        var chart = new ApexCharts(document.querySelector("#chart99"), options);
         chart.render();
 </script>
-
 
 <script>
 	var options = {
@@ -353,55 +352,54 @@
          }
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart555"), options);
+        var chart = new ApexCharts(document.querySelector("#chart77"), options);
         chart.render();
 </script>
 
-
 <script>
-        var options = {
-        series: [{
-            name: 'series1',
-            data: [31, 40, 68, 31, 92, 55, 100]
-        }],
-        chart: {
-            foreColor: '#9ba7b2',
-            height: 360,
-            type: 'area',
-            zoom: {
-                enabled: false
-            },
-            toolbar: {
-                show: true
-            },
-        },
-        colors: ["#0d6efd", '#f41127'],
-        title: {
-            text: 'Area Chart',
-            align: 'left',
-            style: {
-                fontSize: "16px",
-                color: '#666'
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            curve: 'smooth'
-        },
-        xaxis: {
-            type: 'datetime',
-            categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-        },
-        tooltip: {
-            x: {
-                format: 'dd/MM/yy HH:mm'
-            },
-        },
-    };
-    var chart = new ApexCharts(document.querySelector("#chart222"), options);
-    chart.render();
+    	var options = {
+		series: [{
+			name: 'series1',
+			data: [31, 40, 68, 31, 92, 55, 100]
+		}],
+		chart: {
+			foreColor: '#9ba7b2',
+			height: 360,
+			type: 'area',
+			zoom: {
+				enabled: false
+			},
+			toolbar: {
+				show: true
+			},
+		},
+		colors: ["#0d6efd", '#f41127'],
+		title: {
+			text: 'Area Chart',
+			align: 'left',
+			style: {
+				fontSize: "16px",
+				color: '#666'
+			}
+		},
+		dataLabels: {
+			enabled: false
+		},
+		stroke: {
+			curve: 'smooth'
+		},
+		xaxis: {
+			type: 'datetime',
+			categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+		},
+		tooltip: {
+			x: {
+				format: 'dd/MM/yy HH:mm'
+			},
+		},
+	};
+	var chart = new ApexCharts(document.querySelector("#chart88"), options);
+	chart.render();
 </script>
 
 

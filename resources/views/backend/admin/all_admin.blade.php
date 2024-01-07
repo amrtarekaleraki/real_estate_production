@@ -68,7 +68,7 @@
 
 
     <td>
-<a href="{{ route('edit.admin.role',$item->id) }}" class="btn btn-info">تعديل</a>
+<a href="{{ route('edit.admin.role',$item->id) }}" class="btn" style="background-color:#489EB5;color:#FFF;">تعديل</a>
 <a href="{{ route('delete.admin.role',$item->id) }}" class="btn btn-danger" id="delete">حذف</a>
     </td>
 </tr>

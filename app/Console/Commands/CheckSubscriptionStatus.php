@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use DateTimeZone;
 use Illuminate\Console\Command;
 use App\Notifications\SubscribeTime;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 
 class CheckSubscriptionStatus extends Command
@@ -32,6 +33,8 @@ class CheckSubscriptionStatus extends Command
      */
     public function handle()
     {
+        // Log::info('cron run');
+
         $users = User::where('role', 'subscriber')->whereNotNull('subscribe_time')->get();
 
         foreach($users as $user)

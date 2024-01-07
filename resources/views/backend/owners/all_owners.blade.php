@@ -74,7 +74,7 @@
     <td>
 
         @if(Auth::user()->can('تعديل مستاجر او مالك'))
-<a href="{{ route('admin.edit.owner',$item->id) }}" class="btn btn-info">تعديل</a>
+<a href="{{ route('admin.edit.owner',$item->id) }}" class="btn" style="background-color:#489EB5;color:#FFF;">تعديل</a>
 @endif
 
 @if(Auth::user()->can('حذف مستاجر او مالك'))

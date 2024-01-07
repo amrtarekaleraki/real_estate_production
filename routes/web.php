@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Subscriber\SubscriberController;
 use App\Http\Controllers\Subscriber\SubscriberOwnerController;
 use App\Http\Controllers\Subscriber\SubscriberBuildingController;
+use App\Http\Controllers\Subscriber\SubscriberReportsController;
 
 
 /////////////////// Backend ////////////////////
@@ -278,6 +279,12 @@ Route::middleware(['auth','role:subscriber'])->group(function () {
         Route::controller(SubscriberController::class)->group(function(){
             Route::get('export/subscribers/building/pdf', 'subscriberBuildingsPdf')->name('export.subscribers.building.pdf');
             Route::get('export/subscribers/owners/pdf', 'subscriberOwnerPdf')->name('export.subscribers.owners.pdf');
+        });
+
+
+        //////////////// subscriber reports  /////////////////////////
+        Route::controller(SubscriberReportsController::class)->group(function(){
+            Route::get('subscriber/all/reports', 'AllReport')->name('subscriber.all.report');
         });
 
 
