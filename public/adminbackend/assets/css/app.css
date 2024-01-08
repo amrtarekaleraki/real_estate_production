@@ -2554,6 +2554,7 @@ input.search-control-2::placeholder {
   top: 5px;
   z-index: 2;
   color: #acacac;
+  margin-top: 2%;
 }
 
 @media screen and (max-width: 1000px) {

@@ -43,32 +43,14 @@
                 </svg>
               </div>
 
-
-
               <div class="d-flex align-items-center mb-2">
               <h5 class="mb-0 text-white">{{ $sellingContractPrice }}kwd</h5>
             </div>
 
-
-
-
-            {{-- <div
-              class="progress my-3 bg-light-transparent"
-              style="height: 3px"
-            >
-              <div
-                class="progress-bar bg-white"
-                role="progressbar"
-                style="width: 55%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div> --}}
             <div class="d-flex align-items-center text-white gap-3">
               <p class="mb-0">إجمالي المبيعات</p>
               <p class="mb-0 card-percentage">
-                5%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                {{ $sell_percentage }}%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M9.00007 10.4356L12.5947 14.0303L13.6554 12.9697L9.00007 8.31435L4.34473 12.9697L5.40538 14.0303L9.00007 10.4356ZM4.50006 5.25H13.5001V6.75H4.50006V5.25Z" fill="#09BC30"/>
                     </svg></span>
               </p>
@@ -102,7 +84,7 @@
             <div class="d-flex align-items-center text-white gap-3">
               <p class="mb-0">إجمالي الايجارات</p>
               <p class="mb-0 card-percentage">
-                5%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                {{ $rent_percentage }}%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M9.00007 10.4356L12.5947 14.0303L13.6554 12.9697L9.00007 8.31435L4.34473 12.9697L5.40538 14.0303L9.00007 10.4356ZM4.50006 5.25H13.5001V6.75H4.50006V5.25Z" fill="#09BC30"/>
                     </svg></span>
               </p>
@@ -135,7 +117,7 @@
             <div class="d-flex align-items-center text-white gap-3">
               <p class="mb-0">إجمالي الشهر</p>
               <p class="mb-0 card-percentage">
-                5%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                {{ $month_percentage }}%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M9.00007 10.4356L12.5947 14.0303L13.6554 12.9697L9.00007 8.31435L4.34473 12.9697L5.40538 14.0303L9.00007 10.4356ZM4.50006 5.25H13.5001V6.75H4.50006V5.25Z" fill="#09BC30"/>
                     </svg></span>
               </p>
@@ -363,7 +345,7 @@
 
 <script>
         var options = {
-        series: [45, 25, 35, 15],
+        series: [{{ $estsmari_chart }}, {{ $tgari_chart }}, {{ $aradi_chart }}, {{$sakani_chart}}],
         chart: {
             foreColor: '#9ba7b2',
             height: 330,

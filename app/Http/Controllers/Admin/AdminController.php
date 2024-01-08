@@ -118,11 +118,54 @@ class AdminController extends Controller
                 }
 
 
+                ////////////////////// charts start/////////////////////////
+                $sakani_chart = Building::where('category_id',1)->count();
+                $tgari_chart = Building::where('category_id',2)->count();
+                $aradi_chart = Building::where('category_id',3)->count();
+                $estsmari_chart = Building::where('category_id',4)->count();
 
-                // dd($monthlyData);
+
+        ///////////////////////////////////////////
+        $rent_buildings = Building::join('users', 'buildings.added_by', '=', 'users.id')
+        ->where('users.role', 'admin')
+        ->where('building_selling_status','rent')
+        ->count();
+        $sell_buildings = Building::join('users', 'buildings.added_by', '=', 'users.id')
+        ->where('users.role', 'admin')
+        ->where('building_selling_status','sell')
+        ->count();
+
+        if($rent_buildings === 0)
+        {
+            $rent_percentage = 0;
+        }
+        else
+        {
+            $rent_percentage = (($rentingContractPrice / $rent_buildings) / 100);
+        }
+        //////////////////////////////
+        if($sell_buildings === 0)
+        {
+            $sell_percentage = 0;
+        }
+        else
+        {
+           $sell_percentage = (($sellingContractPrice / $sell_buildings) / 100);
+        }
+        /////////////////////
+        if($monthContractPrice === 0)
+        {
+            $month_percentage = 0;
+        }
+        else
+        {
+            $month_percentage = (($monthContractPrice / 100) * 100);
+        }
+        /////////////////////////
 
 
-        return view('admin.index', compact('buildings','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData'));
+
+        return view('admin.index', compact('buildings','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData','sakani_chart','tgari_chart','aradi_chart','estsmari_chart','rent_percentage','sell_percentage','month_percentage',));
     }
 
      public function AdminSwitcher()

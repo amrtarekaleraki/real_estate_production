@@ -118,10 +118,48 @@ class SubscriberController extends Controller
             }
 
 
+            ////////////////////// charts start/////////////////////////
+            $sakani_chart = Building::where('category_id',1)->where('added_by',Auth::user()->id)->count();
+            $tgari_chart = Building::where('category_id',2)->where('added_by',Auth::user()->id)->count();
+            $aradi_chart = Building::where('category_id',3)->where('added_by',Auth::user()->id)->count();
+            $estsmari_chart = Building::where('category_id',4)->where('added_by',Auth::user()->id)->count();
 
-            // dd($monthlyData);
 
-        return view('subscriber.index',compact('buildings','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData'));
+            ///////////////////////////////////////////////////
+            $rent_buildings = Building::where('added_by',Auth::user()->id)->where('building_selling_status','rent')->count();
+            $sell_buildings = Building::where('added_by',Auth::user()->id)->where('building_selling_status','sell')->count();
+
+            if($rent_buildings === 0)
+            {
+                $rent_percentage = 0;
+            }
+            else
+            {
+                $rent_percentage = (($rentingContractPrice / $rent_buildings) / 100);
+            }
+            //////////////////////////////
+            if($sell_buildings === 0)
+            {
+                $sell_percentage = 0;
+            }
+            else
+            {
+            $sell_percentage = (($sellingContractPrice / $sell_buildings) / 100);
+            }
+            /////////////////////
+            if($monthContractPrice === 0)
+            {
+                $month_percentage = 0;
+            }
+            else
+            {
+                $month_percentage = (($monthContractPrice / 100) * 100);
+            }
+            /////////////////////////
+
+
+
+        return view('subscriber.index',compact('buildings','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData','sakani_chart','tgari_chart','aradi_chart','estsmari_chart','rent_percentage','sell_percentage','month_percentage'));
     }
 
 
