@@ -97,7 +97,7 @@ class SubscriberReportsController extends Controller
         }
         else
         {
-            $month_percentage = (($monthContractPrice / 100) * 100);
+            $month_percentage = $monthContractPrice / 100;
         }
         /////////////////////////
         $AllBuildingSystem = Building::latest()->get()->count();
