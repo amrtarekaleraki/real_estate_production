@@ -2549,6 +2549,7 @@ input.search-control-2::placeholder {
 }
 
 .password-eye {
+  /* position: absolute; */
   position: absolute;
   left: 20px;
   top: 5px;

@@ -125,7 +125,7 @@ class AdminController extends Controller
                 $estsmari_chart = Building::where('category_id',4)->count();
 
 
-        ///////////////////////////////////////////
+        //////////////////////////
         $rent_buildings = Building::join('users', 'buildings.added_by', '=', 'users.id')
         ->where('users.role', 'admin')
         ->where('building_selling_status','rent')
@@ -159,7 +159,7 @@ class AdminController extends Controller
         }
         else
         {
-            $month_percentage = (($monthContractPrice / 100) * 100);
+            $month_percentage = $monthContractPrice / 100;
         }
         /////////////////////////
 
