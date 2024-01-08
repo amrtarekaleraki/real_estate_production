@@ -208,6 +208,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function(){
         Route::get('export/building/pdf', 'viewPdf')->name('export.building.pdf');
         Route::get('export/subscribers/pdf', 'subscribersPdf')->name('export.subscribers.pdf');
+
+        Route::get('export/building/excel', 'viewExcel')->name('export.building.excel');
+
     });
 
 
@@ -279,6 +282,9 @@ Route::middleware(['auth','role:subscriber'])->group(function () {
         Route::controller(SubscriberController::class)->group(function(){
             Route::get('export/subscribers/building/pdf', 'subscriberBuildingsPdf')->name('export.subscribers.building.pdf');
             Route::get('export/subscribers/owners/pdf', 'subscriberOwnerPdf')->name('export.subscribers.owners.pdf');
+
+            Route::get('export/subscribers/building/excel', 'viewExcel')->name('export.subscribers.building.excel');
+
         });
 
 

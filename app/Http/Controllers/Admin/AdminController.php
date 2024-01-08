@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\BuildingExport;
 use App\Http\Controllers\Controller;
 use App\Models\Building;
 use App\Models\Category;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -855,5 +857,14 @@ class AdminController extends Controller
 
         return $pdf->stream('المشتركين.pdf');
     }
+
+
+
+        ///// export buildings to excel
+
+        public function viewExcel()
+        {
+            return Excel::download(new BuildingExport(), 'العقارات.xlsx' );
+        }
 
 }

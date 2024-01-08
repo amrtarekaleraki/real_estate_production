@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Subscriber;
 
+use App\Exports\SubscriberBuildingExport;
 use App\Http\Controllers\Controller;
 use App\Models\Building;
 use App\Models\Category;
@@ -13,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SubscriberController extends Controller
 {
@@ -303,6 +305,14 @@ class SubscriberController extends Controller
         $pdf = PDF::loadView('subscriber.exports.pdf.owners_pdf', ['data' => $data]);
 
         return $pdf->stream('المستأجرين والملاك.pdf');
+    }
+
+
+    ///// export buildings to excel
+
+    public function viewExcel()
+    {
+        return Excel::download(new SubscriberBuildingExport(), 'العقارات.xlsx' );
     }
 
 
