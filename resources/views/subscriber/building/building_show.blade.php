@@ -130,6 +130,16 @@
                           <p>{!! $buildings->building_desc !!}</p>
                     </div>
 
+                    @if (is_null($buildings->building_map))
+
+                    @else
+                        <div class="buildings-details-description">
+                            <h3>العنوان علي الخريطه</h3>
+                                {{-- <iframe style="width:100%;" src="{{ $buildings->building_map }}"  height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
+                                    {!! $buildings->building_map !!}
+                        </div>
+                    @endif
+
                     <div class="buildings-details-photos">
                           <h3>جميع الصور</h3>
                           <div class="buildings-details-photos-all">
@@ -227,3 +237,5 @@
 
 
 @endsection
+
+

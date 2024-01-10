@@ -52,15 +52,21 @@
            </div>
 
            <div class="row mt-3">
-                <div class="col-lg-6 add-buildings-inputs">
+                <div class="col-lg-4 add-buildings-inputs">
                     <label for="">المنطقه</label>
                     <input name="area" type="text" placeholder="اسم المنطقه" value="{{ $buildings->area }}">
                 </div>
 
-                <div class="col-lg-6 add-buildings-inputs">
+                <div class="col-lg-4 add-buildings-inputs">
                     <label for="">القطعه</label>
                     <input name="place" type="text" placeholder="القطعه" value="{{ $buildings->place }}">
                 </div>
+
+                <div class="col-lg-4 add-buildings-inputs">
+                    <label for="">العنوان علي الخريطه</label>
+                    <input name="building_map" type="text" class="form-control" placeholder="العنوان علي الخريطه" value="{{ $buildings->building_map }}">
+                 </div>
+
            </div>
 
            <div class="row mt-3">
@@ -633,3 +639,5 @@ dateFormat: 'Y/m/d', // Set your desired date format here
 
 
 @endsection
+
+

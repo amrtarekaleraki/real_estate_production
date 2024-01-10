@@ -20,17 +20,17 @@
 
                         <div class="buildings-details-cover-info-card">
                           <div class="dotts-icon-buildings-details">
-                            <div class="dotts-icon" role="group">
+                            {{-- <div class="dotts-icon" role="group">
                               <button id="btnGroupDrop1" type="button" class="single-file-header-left-sec-button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="4" height="16" viewBox="0 0 4 16" fill="none">
                                     <path d="M2 0.5C1.3125 0.5 0.75 1.0625 0.75 1.75C0.75 2.4375 1.3125 3 2 3C2.6875 3 3.25 2.4375 3.25 1.75C3.25 1.0625 2.6875 0.5 2 0.5ZM2 13C1.3125 13 0.75 13.5625 0.75 14.25C0.75 14.9375 1.3125 15.5 2 15.5C2.6875 15.5 3.25 14.9375 3.25 14.25C3.25 13.5625 2.6875 13 2 13ZM2 6.75C1.3125 6.75 0.75 7.3125 0.75 8C0.75 8.6875 1.3125 9.25 2 9.25C2.6875 9.25 3.25 8.6875 3.25 8C3.25 7.3125 2.6875 6.75 2 6.75Z" fill="#707070"/>
                                   </svg>
                               </button>
-                              {{-- <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <li><a class="dropdown-item" href="#">حذف</a></li>
                                 <li><a class="dropdown-item" href="#">تعديل</a></li>
-                              </ul> --}}
-                            </div>
+                              </ul>
+                            </div> --}}
                           </div>
                             <div class="card-info-content">
                               <img src="{{ asset($buildings->Owner->photo) }}">
@@ -47,6 +47,7 @@
                                     <p class="wealth-count">{{ $buildings->Owner->owner_building_num }} عقار</p>
                                 @endif
                             </div>
+
                         </div>
 
 
@@ -129,6 +130,16 @@
                           <h3>الوصف</h3>
                           <p>{!! $buildings->building_desc !!}</p>
                     </div>
+
+                    @if (is_null($buildings->building_map))
+
+                    @else
+                        <div class="buildings-details-description">
+                            <h3>العنوان علي الخريطه</h3>
+                                {{-- <iframe style="width:100%;" src="{{ $buildings->building_map }}"  height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
+                                {!! $buildings->building_map !!}
+                        </div>
+                    @endif
 
                     <div class="buildings-details-photos">
                           <h3>جميع الصور</h3>
@@ -227,3 +238,4 @@
 
 
 @endsection
+

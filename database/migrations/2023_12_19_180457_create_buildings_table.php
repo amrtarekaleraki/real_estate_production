@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('building_cover_img');
             $table->string('building_title');
+            $table->text('building_map')->nullable();
             $table->string('building_location');
             $table->integer('category_id');
             $table->string('area')->nullable();

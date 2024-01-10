@@ -70,6 +70,7 @@
 
             @foreach($buildings as $key => $item)
                 <div class="col-lg-4">
+                <a href="{{ route('subscriber.show.building',$item->id) }}">
                     <div class="building">
                         <div class="building-img">
                             <img src="{{ asset($item->building_cover_img) }}" alt="">
@@ -145,6 +146,7 @@
                         </div>
 
                     </div>
+                </a>
                 </div>
 
             @endforeach

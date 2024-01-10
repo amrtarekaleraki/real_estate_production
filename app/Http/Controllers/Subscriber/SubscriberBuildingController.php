@@ -84,6 +84,7 @@ class SubscriberBuildingController extends Controller
             'building_cover_img' => $save_url,
             'building_title' => $request->building_title,
             'building_location' => $request->building_location,
+            'building_map' => $request->building_map,
             'category_id' => $request->category_id,
             'area' => $request->area,
             'place' => $request->place,
@@ -246,6 +247,7 @@ class SubscriberBuildingController extends Controller
 
             $building->building_title = $request->building_title;
             $building->building_location = $request->building_location;
+            $building->building_map = $request->building_map;
             $building->category_id = $request->category_id;
             $building->area = $request->area;
             $building->place = $request->place;
