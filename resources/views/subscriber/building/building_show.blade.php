@@ -2,6 +2,113 @@
 
 @section('subscriber')
 
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 50%;
+        height: 50%;
+        background-color: rgba(0, 0, 0, 0.597);
+    }
+
+
+    .carousel,
+    .carousel-item {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .carousel-item img {
+    /* width: 100% !important; */
+    /* height: 100% !important; */
+    object-fit: contain !important;
+    object-position: center center !important;
+}
+
+
+    .carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 2em;
+    width: 2em;
+    background-size: 2em 2em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.carousel-control-next
+{
+    height: 30px !important;
+    width: 30px !important;
+    top: 35% !important;
+}
+.carousel-control-prev
+{
+    height: 30px !important;
+    width: 30px !important;
+    top: 35% !important;
+}
+
+
+.close {
+    font-size: 2em;
+    color: white;
+    padding-right: 10px;
+    background-color: black;
+}
+.close:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* /////////////////////////// */
+.show-more-container {
+    position: relative;
+    width: 100%;
+}
+
+.show-more-container img {
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+
+.show-more-container .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: .5s ease;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+/* .show-more-container:hover .overlay {
+    opacity: 1;
+} */
+
+.overlay .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+</style>
+
 
 
 <div class="page-content">
@@ -20,17 +127,17 @@
 
                         <div class="buildings-details-cover-info-card">
                           <div class="dotts-icon-buildings-details">
-                            <div class="dotts-icon" role="group">
+                            {{-- <div class="dotts-icon" role="group">
                               <button id="btnGroupDrop1" type="button" class="single-file-header-left-sec-button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="4" height="16" viewBox="0 0 4 16" fill="none">
                                     <path d="M2 0.5C1.3125 0.5 0.75 1.0625 0.75 1.75C0.75 2.4375 1.3125 3 2 3C2.6875 3 3.25 2.4375 3.25 1.75C3.25 1.0625 2.6875 0.5 2 0.5ZM2 13C1.3125 13 0.75 13.5625 0.75 14.25C0.75 14.9375 1.3125 15.5 2 15.5C2.6875 15.5 3.25 14.9375 3.25 14.25C3.25 13.5625 2.6875 13 2 13ZM2 6.75C1.3125 6.75 0.75 7.3125 0.75 8C0.75 8.6875 1.3125 9.25 2 9.25C2.6875 9.25 3.25 8.6875 3.25 8C3.25 7.3125 2.6875 6.75 2 6.75Z" fill="#707070"/>
                                   </svg>
                               </button>
-                              {{-- <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <li><a class="dropdown-item" href="#">حذف</a></li>
                                 <li><a class="dropdown-item" href="#">تعديل</a></li>
-                              </ul> --}}
-                            </div>
+                              </ul>
+                            </div> --}}
                           </div>
                             <div class="card-info-content">
                               <img src="{{ asset($buildings->Owner->photo) }}">
@@ -141,19 +248,72 @@
                     @endif
 
                     <div class="buildings-details-photos">
-                          <h3>جميع الصور</h3>
-                          <div class="buildings-details-photos-all">
+                        <h3>جميع الصور</h3>
+                        <div class="buildings-details-photos-all">
 
-                                <div class="row">
-                                    @foreach($multiImgs as $key => $img)
-                                        <div class="col-lg-4">
-                                            <img src="{{ asset($img->photo_name) }}">
-                                        </div>
-                                    @endforeach
-                                </div>
+                              {{-- <div class="row">
+                                  @foreach($multiImgs as $key => $img)
+                                      <div class="col-lg-3">
+                                          <img src="{{ asset($img->photo_name) }}">
+                                      </div>
+                                  @endforeach
+                              </div> --}}
+                              {{-- asset('adminbackend/assets/images/new/1.png') --}}
 
-                          </div>
-                    </div>
+
+
+                              <div class="row">
+                                  @foreach($multiImgs as $key => $img)
+                                      <div class="col-lg-3">
+                                          @if($key < 3)
+                                              <img src="{{ asset($img->photo_name) }}">
+                                          @else
+                                              <!-- fourth image display -->
+                                              @if($key == 3)
+                                                  <div class="show-more-container" onclick="openSlider()">
+                                                      <img class="fourth-img" src="{{ asset($img->photo_name) }}">
+                                                      <div class="overlay">
+                                                          <div class="text">باقي الصور</div>
+                                                      </div>
+                                                  </div>
+                                              @endif
+                                          @endif
+                                      </div>
+                                  @endforeach
+                              </div>
+
+                              <!-- Slider Modal -->
+                              <div id="sliderModal" class="modal">
+                                  <div class="close" onclick="closeSlider()">&times;</div>
+                                  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                      <div class="carousel-inner">
+                                          @foreach($multiImgs as $key => $img)
+                                              @if($key >= 3)
+                                                  <div class="carousel-item @if($key == 3) active @endif">
+                                                      <img class="d-block w-100" src="{{ asset($img->photo_name) }}" alt="Slide {{$key}}">
+                                                  </div>
+                                              @endif
+                                          @endforeach
+                                      </div>
+                                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                          <span class="visually-hidden">Previous</span>
+                                      </button>
+                                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                          <span class="visually-hidden">Next</span>
+                                      </button>
+                                  </div>
+                              </div>
+
+
+
+
+                              {{-- /////////////////////// --}}
+
+
+                        </div>
+                  </div>
 
 
                     <div class="buildings-details-photos">
@@ -162,8 +322,8 @@
 
                               <div class="row">
                                   @foreach($multiVideos as $key => $video)
-                                      <div class="col-lg-4">
-                                          <video src="{{ asset($video->video_name) }}" controls width="300"></video>
+                                      <div class="col-lg-3">
+                                          <video src="{{ asset($video->video_name) }}" controls width="290" height="170"></video>
                                       </div>
                                   @endforeach
                               </div>
@@ -228,12 +388,20 @@
 
 
 
-
-
-
-
   </div>
 
+
+
+
+<script>
+function openSlider() {
+    document.getElementById('sliderModal').style.display = "block";
+}
+
+function closeSlider() {
+    document.getElementById('sliderModal').style.display = "none";
+}
+</script>
 
 
 @endsection

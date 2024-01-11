@@ -3,6 +3,114 @@
 @section('admin')
 
 
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 50%;
+        height: 50%;
+        background-color: rgba(0, 0, 0, 0.597);
+    }
+
+
+    .carousel,
+    .carousel-item {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .carousel-item img {
+    /* width: 100% !important; */
+    /* height: 100% !important; */
+    object-fit: contain !important;
+    object-position: center center !important;
+}
+
+
+    .carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 2em;
+    width: 2em;
+    background-size: 2em 2em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.carousel-control-next
+{
+    height: 30px !important;
+    width: 30px !important;
+    top: 35% !important;
+}
+.carousel-control-prev
+{
+    height: 30px !important;
+    width: 30px !important;
+    top: 35% !important;
+}
+
+
+.close {
+    font-size: 2em;
+    color: white;
+    padding-right: 10px;
+    background-color: black;
+}
+.close:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* /////////////////////////// */
+.show-more-container {
+    position: relative;
+    width: 100%;
+}
+
+.show-more-container img {
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+
+.show-more-container .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: .5s ease;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+/* .show-more-container:hover .overlay {
+    opacity: 1;
+} */
+
+.overlay .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+</style>
+
+
 
 <div class="page-content">
 
@@ -145,13 +253,66 @@
                           <h3>جميع الصور</h3>
                           <div class="buildings-details-photos-all">
 
-                                <div class="row">
+                                {{-- <div class="row">
                                     @foreach($multiImgs as $key => $img)
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <img src="{{ asset($img->photo_name) }}">
                                         </div>
                                     @endforeach
+                                </div> --}}
+                                {{-- asset('adminbackend/assets/images/new/1.png') --}}
+
+
+
+                                <div class="row">
+                                    @foreach($multiImgs as $key => $img)
+                                        <div class="col-lg-3">
+                                            @if($key < 3)
+                                                <img src="{{ asset($img->photo_name) }}">
+                                            @else
+                                                <!-- fourth image display -->
+                                                @if($key == 3)
+                                                    <div class="show-more-container" onclick="openSlider()">
+                                                        <img class="fourth-img" src="{{ asset($img->photo_name) }}">
+                                                        <div class="overlay">
+                                                            <div class="text">باقي الصور</div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    @endforeach
                                 </div>
+
+                                <!-- Slider Modal -->
+                                <div id="sliderModal" class="modal">
+                                    <div class="close" onclick="closeSlider()">&times;</div>
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach($multiImgs as $key => $img)
+                                                @if($key >= 3)
+                                                    <div class="carousel-item @if($key == 3) active @endif">
+                                                        <img class="d-block w-100" src="{{ asset($img->photo_name) }}" alt="Slide {{$key}}">
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+
+                                {{-- /////////////////////// --}}
+
 
                           </div>
                     </div>
@@ -162,11 +323,11 @@
                         <div class="buildings-details-photos-all">
 
                               <div class="row">
-                                  @foreach($multiVideos as $key => $video)
-                                      <div class="col-lg-4">
-                                          <video src="{{ asset($video->video_name) }}" controls width="300"></video>
-                                      </div>
-                                  @endforeach
+                                @foreach($multiVideos as $key => $video)
+                                    <div class="col-lg-3">
+                                        <video src="{{ asset($video->video_name) }}" controls width="290" height="170"></video>
+                                    </div>
+                                @endforeach
                               </div>
 
                         </div>
@@ -229,11 +390,19 @@
 
 
 
-
-
-
-
   </div>
+
+
+
+  <script>
+    function openSlider() {
+      document.getElementById('sliderModal').style.display = "block";
+    }
+
+    function closeSlider() {
+      document.getElementById('sliderModal').style.display = "none";
+    }
+  </script>
 
 
 
