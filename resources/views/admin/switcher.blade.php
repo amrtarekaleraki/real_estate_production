@@ -78,47 +78,48 @@
             </li>
 
 
-        @if(Auth::user()->can('قائمه اداره العقارات'))
-            <li>
-                <a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon">
-                        <img src="{{ asset('adminbackend/assets/images/new/manage-buildings-icon.png') }}"
-                            alt="">
-                    </div>
-                    <div class="menu-title">إداره العقارات</div>
-                </a>
-                <ul>
-                    @if(Auth::user()->can('الاقسام'))
-                        <li>
-                            <a href="{{ route('all.category') }}"><i class="bx bx-left-arrow-alt"></i>الأقسام</a>
-                        </li>
-                    @endif
-                    @if(Auth::user()->can('جميع العقارات'))
-                        <li>
-                            <a href="{{ route('all.building') }}"><i class="bx bx-left-arrow-alt"></i>جميع العقارات</a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        @endif
+            @if(Auth::user()->can('قائمه اداره العقارات'))
+                <li>
+                    {{-- <a href="{{ route('all.building') }}" class="has-arrow"> --}}
+                    <a href="{{ route('all.building') }}">
+                        <div class="parent-icon">
+                            <img src="{{ asset('adminbackend/assets/images/new/manage-buildings-icon.png') }}"alt="">
+                        </div>
+                        <div class="menu-title">إداره العقارات</div>
+                    </a>
+                    {{-- <ul>
+                        @if(Auth::user()->can('الاقسام'))
+                            <li>
+                                <a href="{{ route('all.category') }}"><i class="bx bx-left-arrow-alt"></i>الأقسام</a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->can('جميع العقارات'))
+                            <li>
+                                <a href="{{ route('all.building') }}"><i class="bx bx-left-arrow-alt"></i>جميع العقارات</a>
+                            </li>
+                        @endif
+                    </ul> --}}
+                </li>
+            @endif
 
 
         @if(Auth::user()->can('قائمه المشتركين'))
             <li>
-                <a class="has-arrow" href="javascript:;">
+                {{-- <a class="has-arrow" href="{{ route('admin.all.subscriber') }}"> --}}
+                <a href="{{ route('admin.all.subscriber') }}">
                     <div class="parent-icon">
                         <img src="{{ asset('adminbackend/assets/images/new/subscribers2-icon.png') }}"
                             alt="">
                     </div>
                     <div class="menu-title">المشتركين</div>
                 </a>
-                <ul>
+                {{-- <ul>
                     @if(Auth::user()->can('جميع المشتركين'))
                         <li>
                             <a href="{{ route('admin.all.subscriber') }}"><i class="bx bx-left-arrow-alt"></i>جميع المشتركين</a>
                         </li>
                     @endif
-                </ul>
+                </ul> --}}
             </li>
         @endif
 
@@ -182,47 +183,50 @@
 
         @if(Auth::user()->can('قائمه المشرفين'))
                 <li>
-                    <a class="has-arrow" href="javascript:;">
+                    {{-- <a class="has-arrow" href="{{ route('all.admin') }}"> --}}
+                    <a href="{{ route('all.admin') }}">
                         <div class="parent-icon">
                             <img src="{{ asset('adminbackend/assets/images/new/roler-icon.png') }}" alt="">
                         </div>
                         <div class="menu-title">المشرفين</div>
                     </a>
-                    <ul>
+                    {{-- <ul>
                         <li> <a href="{{ route('all.admin') }}"><i class="bx bx-right-arrow-alt"></i>جميع المشرفين</a></li>
-                    </ul>
+                    </ul> --}}
                 </li>
         @endif
 
 
         <li>
-            <a class="has-arrow" href="javascript:;">
+            {{-- <a class="has-arrow" href="{{ route('all.report') }}"> --}}
+            <a href="{{ route('all.report') }}">
                 <div class="parent-icon">
                     <img src="{{ asset('adminbackend/assets/images/new/reports-icon.png') }}" alt="">
                 </div>
                 <div class="menu-title">تقارير و إحصائيات</div>
             </a>
-            <ul>
+            {{-- <ul>
                 <li>
                     <a href="{{ route('all.report') }}"><i class="bx bx-left-arrow-alt"></i>جميع التقارير</a>
                 </li>
-            </ul>
+            </ul> --}}
         </li>
 
         @if(Auth::user()->can('قائمه الاعدادات'))
             <li>
-                <a class="has-arrow" href="javascript:;">
+                {{-- <a class="has-arrow" href="{{ route('all.settings') }}"> --}}
+                <a href="{{ route('all.settings') }}">
                     <div class="parent-icon">
                         <img src="{{ asset('adminbackend/assets/images/new/settings-icon.png') }}"
                             alt="">
                     </div>
                     <div class="menu-title">الاعدادات</div>
                 </a>
-                <ul>
+                {{-- <ul>
                     <li>
                         <a href="{{ route('all.settings') }}"><i class="bx bx-left-arrow-alt"></i>جميع الاعدادات</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
         @endif
 

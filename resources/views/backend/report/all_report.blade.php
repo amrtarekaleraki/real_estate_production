@@ -307,6 +307,10 @@
         };
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
+
+        document.querySelector("#chart .apexcharts-title-text").style.display = "none";
+        document.querySelector("#chart .apexcharts-menu-icon").style.display = "none";
+
 </script>
 
 
@@ -402,6 +406,9 @@
     };
     var chart = new ApexCharts(document.querySelector("#chart222"), options);
     chart.render();
+
+    document.querySelector("#chart222 .apexcharts-title-text").style.display = "none";
+    document.querySelector("#chart222 .apexcharts-menu-icon").style.display = "none";
 </script>
 
 

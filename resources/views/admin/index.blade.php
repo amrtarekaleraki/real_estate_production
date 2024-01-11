@@ -13,6 +13,10 @@
         box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
         height: 100%;
     }
+    #chart888 .apexcharts-legend-text
+    {
+      margin-right: 5px;
+    }
 </style>
 
 
@@ -349,7 +353,7 @@
 
 
 <script>
-        var options = {
+    var options = {
         series: [{{ $estsmari_chart }}, {{ $tgari_chart }}, {{ $aradi_chart }}, {{$sakani_chart}}],
         chart: {
             foreColor: '#9ba7b2',
@@ -358,6 +362,9 @@
         },
         colors: ["#EFF4FB", "#6AD2FF", "#4318FF", "#FED64A"],
         labels: ['الاستثماري', 'التجاري', 'الاراضي', 'السكني'],
+        legend: {
+            position: 'bottom'
+        },
         responsive: [{
             breakpoint: 480,
             options: {
@@ -420,6 +427,9 @@
 	};
 	var chart = new ApexCharts(document.querySelector("#chart999"), options);
 	chart.render();
+
+    document.querySelector("#chart999 .apexcharts-title-text").style.display = "none";
+    document.querySelector("#chart999 .apexcharts-menu-icon").style.display = "none";
 </script>
 
 

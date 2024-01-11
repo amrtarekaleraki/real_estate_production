@@ -307,6 +307,8 @@
         };
         var chart = new ApexCharts(document.querySelector("#chart99"), options);
         chart.render();
+        document.querySelector("#chart99 .apexcharts-title-text").style.display = "none";
+        document.querySelector("#chart99 .apexcharts-menu-icon").style.display = "none";
 </script>
 
 <script>
@@ -400,6 +402,8 @@
 	};
 	var chart = new ApexCharts(document.querySelector("#chart88"), options);
 	chart.render();
+    document.querySelector("#chart88 .apexcharts-title-text").style.display = "none";
+    document.querySelector("#chart88 .apexcharts-menu-icon").style.display = "none";
 </script>
 
 

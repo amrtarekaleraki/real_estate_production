@@ -13,6 +13,10 @@
         box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
         height: 100%;
     }
+    #chart33 .apexcharts-legend-text
+    {
+      margin-right: 5px;
+    }
 </style>
 
 
@@ -310,6 +314,9 @@
 		},
 		colors: ["#EFF4FB", "#6AD2FF", "#4318FF", "#FED64A"],
 		labels: ['الاستثماري', 'التجاري', 'الاراضي', 'السكني'],
+        legend: {
+            position: 'bottom'
+        },
 		responsive: [{
 			breakpoint: 480,
 			options: {
@@ -371,6 +378,9 @@
 	};
 	var chart = new ApexCharts(document.querySelector("#chart44"), options);
 	chart.render();
+
+    document.querySelector("#chart44 .apexcharts-title-text").style.display = "none";
+    document.querySelector("#chart44 .apexcharts-menu-icon").style.display = "none";
 </script>
 
 
