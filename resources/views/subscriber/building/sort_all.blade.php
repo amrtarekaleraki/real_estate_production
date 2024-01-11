@@ -23,7 +23,9 @@
                                         <div class="row row-cols-lg-auto g-2 gap-5">
                                             <div class="col-12">
                                                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                                    <button type="button" class="btn btn-white">القسم</button>
+                                                    <button id="selected-category-button" type="button" class="btn btn-white">
+                                                        {{ $chosenCategory ?? 'القسم' }}
+                                                    </button>
                                                     <div class="btn-group" role="group">
                                                       <button id="btnGroupDrop1" type="button" class="btn btn-white dropdown-toggle dropdown-toggle-nocaret px-1" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class='bx bx-chevron-down'></i>

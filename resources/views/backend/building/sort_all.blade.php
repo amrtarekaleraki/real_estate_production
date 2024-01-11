@@ -22,7 +22,10 @@
                                         <div class="row row-cols-lg-auto g-2 gap-5">
                                             <div class="col-12">
                                                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                                    <button type="button" class="btn btn-white">القسم</button>
+                                                    {{-- <button type="button" class="btn btn-white">القسم</button> --}}
+                                                    <button id="selected-category-button" type="button" class="btn btn-white">
+                                                        {{ $chosenCategory ?? 'القسم' }}
+                                                    </button>
                                                     <div class="btn-group" role="group">
                                                       <button id="btnGroupDrop1" type="button" class="btn btn-white dropdown-toggle dropdown-toggle-nocaret px-1" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class='bx bx-chevron-down'></i>
@@ -32,13 +35,21 @@
                                                                 $categories = App\Models\Category::latest()->get();
                                                             @endphp
                                                             <li><a class="dropdown-item" style="text-align: right;" href="{{ route('all.building') }}">الكل</a></li>
-                                                            @foreach ($categories as $item)
+                                                            {{-- @foreach ($categories as $item)
                                                             <li><a class="dropdown-item" style="text-align: right;" href="{{ route('all.sort',$item->id) }}">{{ $item->category_name }}</a></li>
+                                                            @endforeach --}}
+                                                            @foreach ($categories as $item)
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item category-item"
+                                                                        style="text-align: right;"
+                                                                        href="{{ route('all.sort',$item->id) }}"
+                                                                        data-category-name="{{ $item->category_name }}"
+                                                                    >
+                                                                        {{ $item->category_name }}
+                                                                    </a>
+                                                                </li>
                                                             @endforeach
-                                                            {{-- <li><a class="dropdown-item" style="text-align: right;" href="#">سكني</a></li> --}}
-                                                            {{-- <li><a class="dropdown-item" style="text-align: right;" href="#">تجاري</a></li> --}}
-                                                            {{-- <li><a class="dropdown-item" style="text-align: right;" href="#">أراضي</a></li> --}}
-                                                            {{-- <li><a class="dropdown-item" style="text-align: right;" href="#">إستثماري</a></li> --}}
                                                         </ul>
                                                     </div>
                                                   </div>
@@ -180,14 +191,7 @@
 
 
 
-
-
-
-
-
-
   </div>
-
 
 
 @endsection

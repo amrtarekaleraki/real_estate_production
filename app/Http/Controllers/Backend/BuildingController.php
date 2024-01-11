@@ -28,19 +28,22 @@ class BuildingController extends Controller
     {
         $category = Category::findOrFail($id);
         $buildings = Building::where('category_id', $category->id)->latest()->get();
-        return view('backend.building.sort_all', compact('buildings'));
+        $chosenCategory = Category::find($category->id)->category_name;
+        return view('backend.building.sort_all', compact('buildings','chosenCategory'));
     }
 
     public function SortByRent()
     {
         $buildings = Building::where('building_selling_status','rent')->latest()->get();
-        return view('backend.building.sort_rent', compact('buildings'));
+        $chosenType = 'إيجار';
+        return view('backend.building.sort_rent', compact('buildings','chosenType'));
     }
 
     public function SortByBuy()
     {
         $buildings = Building::where('building_selling_status','sell')->latest()->get();
-        return view('backend.building.sort_buy', compact('buildings'));
+        $chosenType = 'بيع';
+        return view('backend.building.sort_buy', compact('buildings','chosenType'));
     }
 
 
