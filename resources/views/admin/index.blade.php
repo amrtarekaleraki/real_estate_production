@@ -15,7 +15,10 @@
     }
     #chart888 .apexcharts-legend-text
     {
-      margin-right: 5px;
+        margin-right: 5px;
+        color: #1B1B1B !important;
+        font-size: 20px !important;
+        font-weight: 700 !important;
     }
 </style>
 
