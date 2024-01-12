@@ -25,8 +25,8 @@
 
     .carousel-item img {
     /* width: 100% !important; */
-    /* height: 100% !important; */
-    object-fit: contain !important;
+    height: 100% !important;
+    object-fit: cover !important;
     object-position: center center !important;
 }
 
@@ -44,14 +44,14 @@
 }
 .carousel-control-next
 {
-    height: 30px !important;
-    width: 30px !important;
+    height: 40px !important;
+    width: 40px !important;
     top: 35% !important;
 }
 .carousel-control-prev
 {
-    height: 30px !important;
-    width: 30px !important;
+    height: 40px !important;
+    width: 40px !important;
     top: 35% !important;
 }
 
@@ -76,7 +76,7 @@
 .show-more-container img {
     display: block;
     width: 100%;
-    height: 300px;
+    height: 200px;
 }
 
 .show-more-container .overlay {
@@ -140,11 +140,11 @@
                             </div> --}}
                           </div>
                             <div class="card-info-content">
-                              <img src="{{ asset($buildings->Owner->photo) }}">
+                              {{-- <img src="{{ asset($buildings->Owner->photo) }}"> --}}
                               <h3>{{ $buildings->Owner->name }}</h3>
                               {{-- <span>AGENT</span> --}}
                               <div class="d-flex justify-content-center gap-2 mt-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none" style="margin-top:5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 11 11" fill="none" style="margin-top:5px;">
                                     <path d="M3.96324 4.73123C4.5095 5.6918 5.3082 6.4905 6.26877 7.03673L6.78473 6.31439C6.95629 6.07429 7.2801 6.00009 7.5391 6.14155C8.35973 6.58984 9.26664 6.86226 10.2127 6.93716C10.5161 6.96119 10.75 7.21436 10.75 7.51868V10.122C10.75 10.4211 10.5238 10.6717 10.2263 10.7022C9.91717 10.734 9.60532 10.75 9.29167 10.75C4.29809 10.75 0.25 6.7019 0.25 1.70833C0.25 1.39466 0.265995 1.08283 0.297769 0.773693C0.328342 0.476187 0.578965 0.25 0.878046 0.25H3.48133C3.78564 0.25 4.03883 0.48394 4.06284 0.787302C4.13772 1.73335 4.41016 2.64029 4.85845 3.46092C4.99991 3.7199 4.92571 4.04373 4.68561 4.21525L3.96324 4.73123ZM2.49248 4.34803L3.60078 3.55639C3.28652 2.878 3.07116 2.15857 2.96091 1.41667H1.42196C1.41843 1.51369 1.41667 1.61092 1.41667 1.70833C1.41667 6.05755 4.94245 9.58333 9.29167 9.58333C9.38908 9.58333 9.48632 9.58158 9.58333 9.57802V8.03907C8.84145 7.92882 8.12202 7.71346 7.44361 7.39922L6.65197 8.50755C6.33172 8.38312 6.02243 8.23671 5.72598 8.07022L5.69209 8.05092C4.54899 7.40091 3.59911 6.45101 2.94908 5.30791L2.9298 5.27402C2.76329 4.97757 2.6169 4.66828 2.49248 4.34803Z" fill="black"/>
                                     </svg>
                                 <p>{{ $buildings->Owner->phone }}</p>
@@ -211,14 +211,14 @@
                                     <p>مطبخ</p>
                              </div> --}}
 
-                             @if($buildings->wifi_status === 'yes')
+                             {{-- @if($buildings->wifi_status === 'yes')
                                 <div class="icon5">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path d="M0.689453 6.99659C3.78027 4.49704 7.71526 3 11.9999 3C16.2845 3 20.2195 4.49704 23.3104 6.99659L22.0536 8.55252C19.3062 6.3307 15.8085 5 11.9999 5C8.19133 5 4.69356 6.3307 1.94617 8.55252L0.689453 6.99659ZM3.83124 10.8864C6.0635 9.08119 8.90544 8 11.9999 8C15.0944 8 17.9363 9.08119 20.1686 10.8864L18.9118 12.4424C17.023 10.9149 14.6183 10 11.9999 10C9.38151 10 6.97679 10.9149 5.08796 12.4424L3.83124 10.8864ZM6.97304 14.7763C8.34673 13.6653 10.0956 13 11.9999 13C13.9042 13 15.6531 13.6653 17.0268 14.7763L15.7701 16.3322C14.7398 15.499 13.4281 15 11.9999 15C10.5717 15 9.26002 15.499 8.22975 16.3322L6.97304 14.7763ZM10.1148 18.6661C10.63 18.2495 11.2858 18 11.9999 18C12.714 18 13.3698 18.2495 13.885 18.6661L11.9999 21L10.1148 18.6661Z" fill="#489EB5"/>
                                     </svg>
                                     <p>wifi</p>
                                 </div>
-                             @endif
+                             @endif --}}
 
                              @if($buildings->parking_status === 'yes')
                                 <div class="icon6">
@@ -332,6 +332,19 @@
                   </div>
 
 
+                {{-- whats start --}}
+                                <div class="buildings-details-photos">
+                                    <h3>مشاركه العقار</h3>
+                                    <div class="buildings-details-cover-info-card">
+                                    <div class="card-info-content">
+                                        <input id="number" type="text" placeholder="ادخل الرقم المراد مشاركه العقار معه" style="width: 80%"> <br> <br>
+                                        <button class="btn" onclick="sendWa()" style="border-radius: 4px;color:#FBF8F8;background: #66B949; font-family: Cairo;font-size: 13px;font-style: normal;font-weight: 600;line-height: 120%;">مشاركه</button>
+                                    </div>
+                                </div>
+                            </div>
+                {{-- whats end --}}
+
+
 
                   <div class="buildings-details-photos">
                     <h3> أرشيف العقار</h3>
@@ -394,13 +407,37 @@
 
 
 <script>
-function openSlider() {
-    document.getElementById('sliderModal').style.display = "block";
-}
+    function openSlider() {
+        document.getElementById('sliderModal').style.display = "block";
+    }
 
-function closeSlider() {
-    document.getElementById('sliderModal').style.display = "none";
-}
+    function closeSlider() {
+        document.getElementById('sliderModal').style.display = "none";
+    }
+</script>
+
+
+<script>
+    function sendWa() {
+        var number = document.getElementById("number").value;
+        var data = "{{ $buildings->building_title }}";
+
+        // Validate if the number is not empty
+        if (number.trim() !== "") {
+            // Assuming the number is valid, construct the WhatsApp link with the data as a query parameter
+            var whatsappLink = "https://wa.me/" + number + "?text=" + encodeURIComponent(data);
+
+            // Create an anchor element
+            var link = document.createElement("a");
+            link.href = whatsappLink;
+            link.target = "_blank"; // Open in a new tab/window
+
+            // Simulate a click on the anchor element
+            link.click();
+        } else {
+            alert("من فضلك ادخل الرقم");
+        }
+    }
 </script>
 
 

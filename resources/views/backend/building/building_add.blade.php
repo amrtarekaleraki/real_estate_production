@@ -2,7 +2,9 @@
 
 @section('admin')
 
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+<script src="https://cdn.tiny.cloud/1/9uwrlfutpkccv6w5fwgyly448al083y7ib0zejey72ukq475/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 <script>
     tinymce.init({
@@ -168,14 +170,14 @@
                 </select>
             </div>
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+            {{-- <div class="form-group col-lg-4 add-buildings-inputs">
                 <label for="">حاله الانترنت</label>
                 <select name="wifi_status" id="">
                      <option hidden class="option-title">حاله الانترنت</option>
                      <option value="yes">يوجد</option>
                      <option value="no">لا يوجد</option>
                 </select>
-            </div>
+            </div> --}}
 
 
             <div class="form-group col-lg-4 add-buildings-inputs">
@@ -188,7 +190,7 @@
             </div>
 
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+            <div class="form-group col-lg-6 add-buildings-inputs">
                 <label for="">حاله العقار</label>
                 <select name="status" id="">
                     <option hidden class="option-title">حاله العقار</option>
@@ -198,7 +200,7 @@
             </div>
 
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+            <div class="form-group col-lg-6 add-buildings-inputs">
                 <label for="">صوره الغلاف</label>
                 <label for="cover-count" class="custom-file-upload">
                   <input  type="file" id="coverImg" class="input-file" name="building_cover_img"  onchange="showFileCount(this, 'cover-count')">

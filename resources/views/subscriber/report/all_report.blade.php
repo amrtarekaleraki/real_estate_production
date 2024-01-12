@@ -18,9 +18,10 @@
                         <div class="card radius-10 card1">
                           <div class="card-body">
                             <div class="icon-circle-3 mb-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
+                                <img src="{{ asset('adminbackend/assets/images/new/icon3.svg') }}" width="25" height="25">
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
                                     <path d="M20 18H22V20H0V18H2V1C2 0.44772 2.44772 0 3 0H19C19.5523 0 20 0.44772 20 1V18ZM18 18V2H4V18H18ZM7 9H10V11H7V9ZM7 5H10V7H7V5ZM7 13H10V15H7V13ZM12 13H15V15H12V13ZM12 9H15V11H12V9ZM12 5H15V7H12V5Z" fill="white"/>
-                                </svg>
+                                </svg> --}}
                               </div>
                             <div class="d-flex align-items-center mb-2">
                               <h5 class="mb-0 text-white">{{ $sellingContractPrice }}kwd</h5>
@@ -44,9 +45,10 @@
                         <div class="card radius-10 card4">
                           <div class="card-body">
                             <div class="icon-circle-4 mb-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <img src="{{ asset('adminbackend/assets/images/new/icon2.svg') }}" width="25" height="25">
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M12.0049 22.0029C6.48204 22.0029 2.00488 17.5258 2.00488 12.0029C2.00488 6.48008 6.48204 2.00293 12.0049 2.00293C17.5277 2.00293 22.0049 6.48008 22.0049 12.0029C22.0049 17.5258 17.5277 22.0029 12.0049 22.0029ZM12.0049 20.0029C16.4232 20.0029 20.0049 16.4212 20.0049 12.0029C20.0049 7.58465 16.4232 4.00293 12.0049 4.00293C7.5866 4.00293 4.00488 7.58465 4.00488 12.0029C4.00488 16.4212 7.5866 20.0029 12.0049 20.0029ZM9.00488 13.0029H8.00488V11.0029H9.00488V10.0029C9.00488 8.06993 10.5719 6.50293 12.5049 6.50293C13.9741 6.50293 15.2319 7.40823 15.7509 8.69143L13.7644 9.18804C13.4971 8.77572 13.0329 8.50293 12.5049 8.50293C11.6765 8.50293 11.0049 9.1745 11.0049 10.0029V11.0029H14.0049V13.0029H11.0049V15.0029H16.0049V17.0029H8.00488V15.0029H9.00488V13.0029Z" fill="white"/>
-                                </svg>
+                                </svg> --}}
                               </div>
                             <div class="d-flex align-items-center mb-2">
                               <h5 class="mb-0 text-white">{{$total_num_buildings}}</h5>
@@ -71,10 +73,11 @@
                         <div class="card radius-10 card2">
                           <div class="card-body">
                             <div class=" icon-circle-1 mb-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <img src="{{ asset('adminbackend/assets/images/new/icon1.svg') }}" width="25" height="25">
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                                     <circle cx="20" cy="20" r="20" fill="#BF83FF"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M22 16C22 18.2091 20.2091 20 18 20C15.7909 20 14 18.2091 14 16C14 13.7909 15.7909 12 18 12C20.2091 12 22 13.7909 22 16ZM18 21C14.134 21 11 23.2386 11 26C11 27.1046 11.8954 28 13 28H23C24.1046 28 25 27.1046 25 26C25 23.2386 21.866 21 18 21ZM26 14C26.5523 14 27 14.4477 27 15V16H28C28.5523 16 29 16.4477 29 17C29 17.5523 28.5523 18 28 18H27V19C27 19.5523 26.5523 20 26 20C25.4477 20 25 19.5523 25 19V18H24C23.4477 18 23 17.5523 23 17C23 16.4477 23.4477 16 24 16H25V15C25 14.4477 25.4477 14 26 14Z" fill="white"/>
-                                </svg>
+                                </svg> --}}
                               </div>
 
 
@@ -101,10 +104,11 @@
                         <div class="card radius-10 card3">
                           <div class="card-body">
                             <div class="icon-circle-2 mb-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                                <img src="{{ asset('adminbackend/assets/images/new/icon4.svg') }}" width="25" height="25">
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
                                     <circle cx="20.5" cy="20" r="20" fill="#3CD856"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M25.1261 13.2653L21.8263 13.7367C21.3222 13.8087 20.9103 14.049 20.6162 14.3811L12.9167 22.0806C12.1357 22.8616 12.1357 24.1279 12.9167 24.909L15.7452 27.7374C16.5263 28.5185 17.7925 28.5185 18.5736 27.7374L26.273 20.038C26.6051 19.7439 26.8454 19.332 26.9174 18.8279L27.3888 15.528C27.5775 14.2081 26.446 13.0767 25.1261 13.2653ZM22.8162 17.8379C23.2067 18.2284 23.8399 18.2285 24.2305 17.8379C24.621 17.4474 24.6209 16.8142 24.2305 16.4237C23.84 16.0332 23.2068 16.0332 22.8162 16.4237C22.4257 16.8142 22.4257 17.4474 22.8162 17.8379Z" fill="white"/>
-                                </svg>
+                                </svg> --}}
                               </div>
                             <div class="d-flex align-items-center mb-2">
                               <h5 class="mb-0 text-white">{{ $rentingContractPrice }}kwd</h5>

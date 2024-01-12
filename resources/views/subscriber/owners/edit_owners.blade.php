@@ -47,7 +47,7 @@ position: relative;
 
                     <input type="hidden" name="id" value="{{ $owner->id }}">
 
-                <div class="row p-3">
+                {{-- <div class="row p-3">
                     <div class="col-lg-2 profile-settings-img">
                         <label for="file-input" class="profile-settings-img-parent">
                             <img id="preview-image" src="{{ (!empty($owner->photo)) ? url($owner->photo)  : url('upload/no_image.jpg') }}" alt="Profile Image">
@@ -62,7 +62,7 @@ position: relative;
                         </label>
                         <input type="file" name="photo" id="file-input" style="display: none">
                     </div>
-                </div>
+                </div> --}}
 
                     <div class="row p-3">
 

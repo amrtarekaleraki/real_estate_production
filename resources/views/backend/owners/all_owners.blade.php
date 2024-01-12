@@ -26,13 +26,14 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="example" class="table table-striped table-bordered" style="width:100%;">
                     <thead>
 <tr>
     <th>رقم التسلسل</th>
     <th>اسم المستأجر او المالك</th>
     <th>النوع</th>
     <th>الحاله</th>
+    <th>رقم الهاتف</th>
     <th>تمت الاضافه بواسطه</th>
     <th>العمليات</th>
 </tr>
@@ -66,6 +67,8 @@
         @endif
         @endif
     </td>
+
+    <td>{{ $item->phone }}</td>
 
     <td>{{ $item->User->name }}</td>
 

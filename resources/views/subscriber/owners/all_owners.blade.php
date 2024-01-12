@@ -23,9 +23,9 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <div class="exports d-flex mb-3" style="gap: 10px;">
+                {{-- <div class="exports d-flex mb-3" style="gap: 10px;">
                     <a href="{{ route('export.subscribers.owners.pdf') }}" class="btn btn-info">PDF</a>
-                </div>
+                </div> --}}
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
 <tr>
@@ -33,6 +33,7 @@
     <th>اسم المستأجر او المالك</th>
     <th>النوع</th>
     <th>الحاله</th>
+    <th>رقم الهاتف</th>
     <th>العمليات</th>
 </tr>
 </thead>
@@ -63,6 +64,8 @@
                 </div>
         @endif
     </td>
+
+    <td>{{ $item->phone }}</td>
 
 
 

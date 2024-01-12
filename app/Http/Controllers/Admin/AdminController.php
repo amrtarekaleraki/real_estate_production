@@ -165,9 +165,25 @@ class AdminController extends Controller
         }
         /////////////////////////
 
+        ////num of buildings added by admin ///
+        $total_num_buildings = Building::join('users', 'buildings.added_by', '=', 'users.id')
+        ->where('users.role', 'admin')
+        ->count();
+
+        /////////////////////////
+        $AllBuildingSystem = Building::latest()->get()->count();
+        if($AllBuildingSystem === 0)
+        {
+            $building_percentage = 0;
+        }
+        else
+        {
+            $building_percentage = (($total_num_buildings / $AllBuildingSystem) * 100);
+        }
 
 
-        return view('admin.index', compact('buildings','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData','sakani_chart','tgari_chart','aradi_chart','estsmari_chart','rent_percentage','sell_percentage','month_percentage',));
+
+        return view('admin.index', compact('buildings','total_num_buildings','building_percentage','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData','sakani_chart','tgari_chart','aradi_chart','estsmari_chart','rent_percentage','sell_percentage','month_percentage',));
     }
 
      public function AdminSwitcher()

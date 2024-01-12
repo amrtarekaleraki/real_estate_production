@@ -33,7 +33,8 @@
         <div class="card radius-10 card2">
           <div class="card-body">
             <div class=" icon-circle-1 mb-3">
-                <svg
+                <img src="{{ asset('adminbackend/assets/images/new/icon2.svg') }}" width="25" height="25">
+                {{-- <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -44,7 +45,7 @@
                     d="M12 3V5H3V3H12ZM16 19V21H3V19H16ZM22 11V13H3V11H22Z"
                     fill="white"
                   />
-                </svg>
+                </svg> --}}
               </div>
 
               <div class="d-flex align-items-center mb-2">
@@ -68,7 +69,8 @@
         <div class="card radius-10 card3">
           <div class="card-body">
             <div class="icon-circle-2 mb-3">
-                <svg
+                <img src="{{ asset('adminbackend/assets/images/new/icon4.svg') }}" width="25" height="25">
+                {{-- <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -79,7 +81,7 @@
                     d="M21.5 20H23.5V22H1.5V20H3.5V3C3.5 2.44772 3.94772 2 4.5 2H20.5C21.0523 2 21.5 2.44772 21.5 3V20ZM19.5 20V4H5.5V20H19.5ZM8.5 11H11.5V13H8.5V11ZM8.5 7H11.5V9H8.5V7ZM8.5 15H11.5V17H8.5V15ZM13.5 15H16.5V17H13.5V15ZM13.5 11H16.5V13H13.5V11ZM13.5 7H16.5V9H13.5V7Z"
                     fill="white"
                   />
-                </svg>
+                </svg> --}}
               </div>
             <div class="d-flex align-items-center mb-2">
               <h5 class="mb-0 text-white">{{ $rentingContractPrice }}kwd</h5>
@@ -98,6 +100,40 @@
       </div>
 
       <div class="col">
+        <div class="card radius-10 card1">
+          <div class="card-body">
+            <div class="icon-circle-3 mb-3">
+                <img src="{{ asset('adminbackend/assets/images/new/icon3.svg') }}" width="25" height="25">
+                {{-- <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="24"
+                  viewBox="0 0 25 24"
+                  fill="none"
+                >
+                  <path
+                    d="M5.5 3V19H21.5V21H3.5V3H5.5ZM20.7929 6.29289L22.2071 7.70711L16.5 13.4142L13.5 10.415L9.20711 14.7071L7.79289 13.2929L13.5 7.58579L16.5 10.585L20.7929 6.29289Z"
+                    fill="white"
+                  />
+                </svg> --}}
+              </div>
+            <div class="d-flex align-items-center mb-2">
+              <h5 class="mb-0 text-white">{{ $total_num_buildings }}</h5>
+            </div>
+
+            <div class="d-flex align-items-center text-white gap-3">
+              <p class="mb-0">إجمالي العقارات</p>
+              <p class="mb-0 card-percentage">
+                {{ $building_percentage }}%<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9.00007 10.4356L12.5947 14.0303L13.6554 12.9697L9.00007 8.31435L4.34473 12.9697L5.40538 14.0303L9.00007 10.4356ZM4.50006 5.25H13.5001V6.75H4.50006V5.25Z" fill="#09BC30"/>
+                    </svg></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{-- <div class="col">
         <div class="card radius-10 card1">
           <div class="card-body">
             <div class="icon-circle-3 mb-3">
@@ -128,8 +164,7 @@
             </div>
           </div>
         </div>
-      </div>
-
+      </div> --}}
 
     </div>
     @endif
@@ -163,7 +198,7 @@
       <div class="card-body">
         <div class="table-responsive">
             <div class="exports d-flex mb-3" style="gap: 10px;">
-                <a href="{{ route('export.building.pdf') }}" class="btn" style="border-radius: 4px;background: #57B0E2;color:#FFF;">
+                <a href="{{ route('export.building.pdf') }}" class="btn" target="_blank" style="border-radius: 4px;background: #57B0E2;color:#FFF;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M0.833496 12.0837C0.833496 10.1433 1.85374 8.44124 3.38705 7.48466C3.80407 4.20366 6.60588 1.66699 10.0002 1.66699C13.3944 1.66699 16.1962 4.20366 16.6132 7.48466C18.1466 8.44124 19.1668 10.1433 19.1668 12.0837C19.1668 14.935 16.9637 17.2717 14.1668 17.4846L5.8335 17.5003C3.03665 17.2717 0.833496 14.935 0.833496 12.0837ZM14.0404 15.8227C15.9849 15.6747 17.5002 14.0471 17.5002 12.0837C17.5002 10.7728 16.8238 9.58049 15.7311 8.89874L15.0597 8.47983L14.9599 7.69481C14.6447 5.21535 12.5242 3.33366 10.0002 3.33366C7.47613 3.33366 5.35555 5.21535 5.04041 7.69481L4.94063 8.47983L4.26923 8.89874C3.17646 9.58049 2.50016 10.7728 2.50016 12.0837C2.50016 14.0471 4.01544 15.6747 5.95991 15.8227L6.10433 15.8337H13.896L14.0404 15.8227ZM10.8335 10.8337V14.167H9.16683V10.8337H6.66683L10.0002 6.66699L13.3335 10.8337H10.8335Z" fill="white"/>
                         </svg>
@@ -193,8 +228,10 @@
                 @foreach ($buildings as $key => $item)
               <tr>
                 <td style="text-align: right;">
-                  <img src="{{ asset($item->building_cover_img)}}" width="40" height="35">
-                 {{ $item->building_title }}
+                    <a href="{{ route('show.building',$item->id) }}" style="color:#1B1B1B;">
+                        <img src="{{ asset($item->building_cover_img)}}" width="40" height="35">
+                        {{ $item->building_title }}
+                    </a>
                 </td>
                 <td>{{ $item->contract_price }}kwd</td>
                 <td>{{ $item->contract_date }}</td>
@@ -315,13 +352,13 @@
                         label: 'البيع',
                         data: sellData,
                         backgroundColor: '#3498db',
-                        borderWidth: 1
+                        borderWidth: 1,
                     },
                     {
                         label: 'الإيجار',
                         data: rentData,
                         backgroundColor: '#9b59b6',
-                        borderWidth: 1
+                        borderWidth: 1,
                     }
                 ]
             },

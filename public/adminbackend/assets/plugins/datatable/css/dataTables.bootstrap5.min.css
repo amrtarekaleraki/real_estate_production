@@ -45,6 +45,8 @@ div.dataTables_wrapper div.dataTables_filter input {
   margin-left: 0.5em;
   display: inline-block;
   width: auto;
+  margin-bottom: 20px;
+  margin-right: 5px;
 }
 div.dataTables_wrapper div.dataTables_info {
   padding-top: 0.85em;
@@ -192,6 +194,7 @@ table.table-bordered.dataTable td:last-child {
 table.table-bordered.dataTable tbody th,
 table.table-bordered.dataTable tbody td {
   border-bottom-width: 0;
+  vertical-align: middle;
 }
 div.dataTables_scrollHead table.table-bordered {
   border-bottom-width: 0;
@@ -214,7 +217,7 @@ div.table-responsive
 
 
 
-.dt-buttons 
+.dt-buttons
 {
   display: flex;
   gap: 10px;
@@ -254,12 +257,12 @@ table.dataTable > thead .sorting_desc_disabled:after
   gap: 10px;
 }
 
-table thead th 
+table thead th
 {
   text-align: center;
 }
 
-table tr td 
+table tr td
 {
   text-align: center;
 }

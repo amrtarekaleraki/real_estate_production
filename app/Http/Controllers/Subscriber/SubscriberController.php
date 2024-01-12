@@ -159,9 +159,21 @@ class SubscriberController extends Controller
             }
             /////////////////////////
 
+            $all_buildings = Building::where('added_by',Auth::user()->id)->latest()->count();
+            /////////////////////////
+            $AllBuildingSystem = Building::latest()->get()->count();
+            if($AllBuildingSystem === 0)
+            {
+            $building_percentage = 0;
+            }
+            else
+            {
+                $building_percentage = (($all_buildings / $AllBuildingSystem) * 100);
+            }
 
 
-        return view('subscriber.index',compact('buildings','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData','sakani_chart','tgari_chart','aradi_chart','estsmari_chart','rent_percentage','sell_percentage','month_percentage'));
+
+        return view('subscriber.index',compact('buildings','all_buildings','building_percentage','sellingContractPrice','rentingContractPrice','monthContractPrice','monthlyData','sakani_chart','tgari_chart','aradi_chart','estsmari_chart','rent_percentage','sell_percentage','month_percentage'));
     }
 
 

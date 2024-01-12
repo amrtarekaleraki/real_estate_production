@@ -34,6 +34,7 @@
     <th>اسم المستأجر </th>
     <th>النوع</th>
     <th>الحاله</th>
+    <th>رقم الهاتف</th>
     <th>تمت الاضافه بواسطه</th>
     <th>العمليات</th>
 </tr>
@@ -68,6 +69,8 @@
         @endif
         @endif
     </td>
+
+    <td>{{ $item->phone }}</td>
 
     <td>{{ $item->User->name }}</td>
 

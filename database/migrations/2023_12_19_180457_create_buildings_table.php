@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('building_price')->nullable();
             $table->enum('building_selling_status',['rent ','sell'])->default('rent');
             $table->enum('building_avilability_status',['bussy ','empty'])->default('empty');
-            $table->enum('wifi_status',['yes','no'])->default('yes');
+            $table->enum('wifi_status',['yes','no'])->nullable();
             $table->enum('parking_status',['yes','no'])->default('yes');
             $table->string('building_desc')->nullable();
             $table->integer('added_by')->nullable();

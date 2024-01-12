@@ -3,7 +3,9 @@
 @section('subscriber')
 
 
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+<script src="https://cdn.tiny.cloud/1/9uwrlfutpkccv6w5fwgyly448al083y7ib0zejey72ukq475/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 <script>
     tinymce.init({
@@ -147,7 +149,7 @@
                 </select>
             </div>
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+            <div class="form-group col-lg-6 add-buildings-inputs">
                 <label for="">اسم المالك</label>
                 <select name="owner_id" id="">
                      <option hidden class="option-title">اسم المالك</option>
@@ -158,7 +160,7 @@
             </div>
 
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+            <div class="form-group col-lg-6 add-buildings-inputs">
                 <label for="">اسم المشتري او المستاجر</label>
                 <select name="tenant_id" id="" required>
                      <option hidden class="option-title"  value="">اسم المشتري او المستاجر</option>
@@ -168,14 +170,14 @@
                 </select>
             </div>
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+            {{-- <div class="form-group col-lg-4 add-buildings-inputs">
                 <label for="">حاله الانترنت</label>
                 <select name="wifi_status" id="">
                      <option hidden class="option-title">حاله الانترنت</option>
                      <option value="yes">يوجد</option>
                      <option value="no">لا يوجد</option>
                 </select>
-            </div>
+            </div> --}}
 
 
             <div class="form-group col-lg-4 add-buildings-inputs">
