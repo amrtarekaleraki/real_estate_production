@@ -119,7 +119,7 @@ class ReportsController extends Controller
         }
         else
         {
-            $building_percentage = (($total_num_buildings / $AllBuildingSystem) * 100);
+            $building_percentage = floor((($total_num_buildings / $AllBuildingSystem) * 100));
         }
 
 

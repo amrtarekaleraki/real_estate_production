@@ -16,6 +16,20 @@ class SubscriberOwnerController extends Controller
         return view('subscriber.owners.all_owners',compact('owners'));
     }
 
+    public function AllTenant()
+    {
+        $user_id = Auth::user()->id;
+        $tenants = Owner::with('User')->where('role','tenant')->where('added_by',$user_id)->latest()->get();
+        return view('subscriber.owners.all_tenants',compact('tenants'));
+    }
+
+    public function OnlyOwner()
+    {
+        $user_id = Auth::user()->id;
+        $only_owners = Owner::with('User')->where('role','owner')->where('added_by',$user_id)->latest()->get();
+        return view('subscriber.owners.only_owners',compact('only_owners'));
+    }
+
     public function AddOwner()
     {
         return view('subscriber.owners.add_owners');

@@ -35,6 +35,9 @@
                 <li>
                     <a href={{ route('subscriber.all.building') }}><i class="bx bx-left-arrow-alt"></i>جميع العقارات</a>
                 </li>
+                <li>
+                    <a href={{ route('subscriber.add.building') }}><i class="bx bx-left-arrow-alt"></i>إضافه عقار</a>
+                </li>
             </ul>
         </li>
 
@@ -50,6 +53,15 @@
             <ul>
                 <li>
                     <a href="{{ route('subscriber.all.owner') }}"><i class="bx bx-left-arrow-alt"></i>جميع المستأجرين و الملاك</a>
+                </li>
+                <li>
+                    <a href="{{ route('subscriber.all.tenant') }}"><i class="bx bx-left-arrow-alt"></i>جميع المستأجرين  </a>
+                </li>
+                <li>
+                    <a href="{{ route('subscriber.only.owner') }}"><i class="bx bx-left-arrow-alt"></i>جميع الملاك</a>
+                </li>
+                <li>
+                    <a href="{{ route('subscriber.add.owner') }}"><i class="bx bx-left-arrow-alt"></i>إضافه مستأجر او مالك</a>
                 </li>
             </ul>
         </li>

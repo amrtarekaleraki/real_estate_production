@@ -101,7 +101,7 @@
 
 
 						 <div class="col-lg-8 login-img">
-                            <img src="{{ asset('adminbackend/assets/images/new/login-img.jpg')}}" alt="">
+                            <img src="{{ asset('adminbackend/assets/images/new/login-img.png')}}" alt="">
 						</div>
 
 					 </div>

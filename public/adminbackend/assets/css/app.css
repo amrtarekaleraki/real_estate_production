@@ -2474,7 +2474,7 @@ input.search-control-2::placeholder {
 }
 
 .login-img img {
-  width: 300px;
+  width: 50%;
   height: 300px;
   align-self: center;
   margin: auto;
@@ -3099,6 +3099,20 @@ line-height: 120%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.buildings-details-price
+{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+@media screen and (max-width: 600px)
+{
+    .buildings-details-price
+    {
+        margin-right: 50px !important;
+    }
 }
 
 .buildings-details-location

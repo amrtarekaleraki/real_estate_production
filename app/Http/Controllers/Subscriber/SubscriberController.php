@@ -168,7 +168,7 @@ class SubscriberController extends Controller
             }
             else
             {
-                $building_percentage = (($all_buildings / $AllBuildingSystem) * 100);
+                $building_percentage = floor((($all_buildings / $AllBuildingSystem) * 100));
             }
 
 

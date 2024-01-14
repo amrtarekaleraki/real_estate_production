@@ -247,6 +247,8 @@ Route::middleware(['auth','role:subscriber'])->group(function () {
     ////////////////subscriber Add Owner /////////////////////////
     Route::controller(SubscriberOwnerController::class)->group(function(){
         Route::get('/subscriber/all-owner','AllOwner')->name('subscriber.all.owner');
+        Route::get('/subscriber/all-tenant','AllTenant')->name('subscriber.all.tenant');
+        Route::get('/subscriber/only-owner','OnlyOwner')->name('subscriber.only.owner');
         Route::get('/subscriber/add-owner','AddOwner')->name('subscriber.add.owner');
         Route::post('/subscriber/store-owner','StoreOwner')->name('subscriber.store.owner');
         Route::get('/subscriber/edit/owner/{id}','EditOwner')->name('subscriber.edit.owner');
