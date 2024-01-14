@@ -24,7 +24,7 @@
 </thead>
 <tbody>
 @foreach($settings as $key => $item)
-<tr>
+<tr style="vertical-align: middle;">
     <td> {{ $key+1 }} </td>
     <td>{{ $item->name }}</td>
     <td>{{ $item->location }}</td>
