@@ -91,7 +91,7 @@ class ReportsController extends Controller
         }
         else
         {
-            $rent_percentage = (($rentingContractPrice / $rent_buildings) / 100);
+            $rent_percentage = floor((($rentingContractPrice / $rent_buildings) / 100));
         }
         //////////////////////////////
         if($sell_buildings === 0)
@@ -100,7 +100,7 @@ class ReportsController extends Controller
         }
         else
         {
-           $sell_percentage = (($sellingContractPrice / $sell_buildings) / 100);
+           $sell_percentage = floor((($sellingContractPrice / $sell_buildings) / 100));
         }
         /////////////////////
         if($monthContractPrice === 0)
@@ -109,7 +109,7 @@ class ReportsController extends Controller
         }
         else
         {
-            $month_percentage = $monthContractPrice / 100;
+            $month_percentage = floor($monthContractPrice / 100);
         }
         /////////////////////////
         $AllBuildingSystem = Building::latest()->get()->count();
