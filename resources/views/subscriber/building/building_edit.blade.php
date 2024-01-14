@@ -203,9 +203,9 @@
 
 
             <div class="form-group col-lg-6 add-buildings-inputs">
-                <label for="">حاله الجراج</label>
+                <label for="">حاله موقف سيارات</label>
                 <select name="parking_status" id="">
-                     <option hidden class="option-title">حاله الجراج</option>
+                     <option hidden class="option-title">حاله موقف سيارات</option>
                      <option value="yes" {{ $buildings->parking_status == 'yes'  ? 'selected' : '' }}>يوجد</option>
                      <option value="no" {{ $buildings->parking_status == 'no'  ? 'selected' : '' }}>لا يوجد</option>
                 </select>
@@ -247,7 +247,7 @@
                 </div>
 
                 <div class="form-group col-lg-6 add-buildings-inputs">
-                    <label>صوره الغلاف</label>
+                    <label>صوره العقار</label>
                     <div class="custom-file-upload">
                         <input type="file" id="coverImg" class="input-file" name="building_cover_img" onchange="previewImage(event)">
                         <label for="coverImg" class="custom-file-upload-label">

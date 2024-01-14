@@ -156,7 +156,8 @@
                                     @endif
 
                                 {{-- whats start --}}
-                                <input id="number" type="text" placeholder="ادخل الرقم المراد مشاركه العقار معه" style="width: 80%"> <br> <br>
+                                <input id="number" type="text" placeholder="ادخل الرقم المراد مشاركه العقار معه" style="width: 80%">
+                                <p style="text-align:center;font-size:12px;color:#489EB5;margin-top:5px;">اذا كنت تريد ارسال الرساله لعدة جهات اتصال مسجلة بالفعل اترك خانة الرقم فارغة</p>
                                 <div class="d-flex" style="justify-content:center;gap:5px; margin-bottom:5px;">
                                     <input type="checkbox" id="nameCheckbox">
                                     <label for="nameCheckbox">الاسم</label>
@@ -165,6 +166,8 @@
                                     <input type="checkbox" id="priceCheckbox">
                                     <label for="priceCheckbox">السعر</label>
 
+                                    <input type="checkbox" id="securityCheckbox">
+                                    <label for="priceCheckbox">رقم الحارس</label>
 
                                     <input type="checkbox" id="locationCheckbox">
                                     <label for="locationCheckbox">الموقع</label>
@@ -521,22 +524,26 @@
         var shareLink = "https://www.google.com/maps/place/" + latitude + "," + longitude;
         /////////////////////////
 
-        if (number.trim() !== "") {
+        // if (number.trim() !== "") {
             if (nameCheckbox.checked) {
-                message += "\nالاسم: [  {{ $buildings->building_title }}]";
+                message += "\n الاسم: [  {{ $buildings->building_title }}]";
             }
             if (priceCheckbox.checked) {
-                message += "\nالسعر: [  {{ $buildings->building_price }}]";
+                message += "\n السعر: [  {{ $buildings->building_price }}]";
             }
             if (locationCheckbox.checked) {
-                message += "\nالموقع: " + shareLink;
+                message += "\n الموقع: " + shareLink;
             }
+            if (securityCheckbox.checked) {
+                message += "\n رقم الحارس: [  {{ $buildings->security_number }}]";
+            }
+
 
             message = encodeURIComponent(message);
             window.open("https://wa.me/" + number + "?text=" + message, '_blank');
-        } else {
-            alert("من فضلك ادخل الرقم");
-        }
+        // } else {
+        //     alert("من فضلك ادخل الرقم");
+        // }
     }
 </script>
 

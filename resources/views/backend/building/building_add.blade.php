@@ -200,9 +200,9 @@
 
 
             <div class="form-group col-lg-4 add-buildings-inputs">
-                <label for="">حاله الجراج</label>
+                <label for="">حاله موقف سيارات</label>
                 <select name="parking_status" id="">
-                     <option hidden class="option-title" value="">حاله الجراج</option>
+                     <option hidden class="option-title" value="">حاله موقف سيارات</option>
                      <option value="yes" @if(old('parking_status') == 'yes') selected @endif>يوجد</option>
                      <option value="no" @if(old('parking_status') == 'no') selected @endif>لا يوجد</option>
                 </select>
@@ -220,7 +220,7 @@
 
 
             <div class="form-group col-lg-6 add-buildings-inputs">
-                <label for="">صوره الغلاف</label>
+                <label for="">صوره العقار</label>
                 <label for="coverImg" class="custom-file-upload">
                   <input  type="file" id="coverImg" class="input-file" name="building_cover_img"  onchange="showFileCount(this, 'cover-count')">
                   <span class="custom-file-upload-svg">
