@@ -261,15 +261,14 @@
                           <p>{!! $buildings->building_desc !!}</p>
                     </div>
 
-                    @if (is_null($buildings->building_map))
+                    {{-- @if (is_null($buildings->building_map))
 
                     @else
                         <div class="buildings-details-description">
                             <h3>العنوان علي الخريطه</h3>
-                                {{-- <iframe style="width:100%;" src="{{ $buildings->building_map }}"  height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                                     {!! $buildings->building_map !!}
                         </div>
-                    @endif
+                    @endif --}}
 
                     <div class="buildings-details-photos">
                         <h3>جميع الصور</h3>
@@ -513,17 +512,17 @@
         var locationCheckbox = document.getElementById("locationCheckbox");
 
         ///////////////////////////
-        var iframeSrc = "{{ $buildings->building_map }}";
-        // Extract the src attribute from the iframe
-        var latIndex = iframeSrc.indexOf('!3d') + 3;
-        var lonIndex = iframeSrc.indexOf('!2d') + 3;
+        // var iframeSrc = "{{ $buildings->building_map }}";
+        // // Extract the src attribute from the iframe
+        // var latIndex = iframeSrc.indexOf('!3d') + 3;
+        // var lonIndex = iframeSrc.indexOf('!2d') + 3;
 
-        // Extract latitude and longitude from the URL
-        var latitude = parseFloat(iframeSrc.substring(latIndex, iframeSrc.indexOf('!', latIndex)));
-        var longitude = parseFloat(iframeSrc.substring(lonIndex, iframeSrc.indexOf('!', lonIndex)));
+        // // Extract latitude and longitude from the URL
+        // var latitude = parseFloat(iframeSrc.substring(latIndex, iframeSrc.indexOf('!', latIndex)));
+        // var longitude = parseFloat(iframeSrc.substring(lonIndex, iframeSrc.indexOf('!', lonIndex)));
 
-        // Create a link to share the location
-        var shareLink = "https://www.google.com/maps/place/" + latitude + "," + longitude;
+        // // Create a link to share the location
+        // var shareLink = "https://www.google.com/maps/place/" + latitude + "," + longitude;
         /////////////////////////
 
         // if (number.trim() !== "") {
@@ -534,7 +533,7 @@
                 message += "\n السعر: [  {{ $buildings->building_price }}]";
             }
             if (locationCheckbox.checked) {
-                message += "\n الموقع: " + shareLink;
+                message += "\n الموقع: [  {{ $buildings->building_map }}]";
             }
             if (securityCheckbox.checked) {
                 message += "\n رقم الحارس: [  {{ $buildings->security_number }}]";
