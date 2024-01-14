@@ -533,7 +533,7 @@
                 message += "\n السعر: [  {{ $buildings->building_price }}]";
             }
             if (locationCheckbox.checked) {
-                message += "\n الموقع: [  {{ $buildings->building_map }}]";
+                message += "\n الموقع: [  {{ $buildings->building_map }} ]";
             }
             if (securityCheckbox.checked) {
                 message += "\n رقم الحارس: [  {{ $buildings->security_number }}]";
