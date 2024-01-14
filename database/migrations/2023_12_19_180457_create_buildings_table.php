@@ -31,17 +31,18 @@ return new class extends Migration
             $table->enum('building_selling_status',['rent ','sell'])->default('rent');
             $table->enum('building_avilability_status',['bussy ','empty'])->default('empty');
             $table->enum('wifi_status',['yes','no'])->nullable();
-            $table->enum('parking_status',['yes','no'])->default('yes');
+            $table->enum('parking_status',['yes','no'])->default('yes')->nullable();
             $table->string('building_desc')->nullable();
             $table->integer('added_by')->nullable();
             $table->string('notes')->nullable();
             $table->integer('owner_id')->nullable();
             $table->integer('tenant_id')->nullable();
-            $table->integer('contract_price');
-            $table->date('contract_date');
+            $table->integer('contract_price')->nullable();
+            $table->date('contract_date')->nullable();
             $table->string('contract_img')->nullable();
-            $table->string('contract_longtime');
+            $table->string('contract_longtime')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
+            $table->string('security_number')->nullable();
             $table->timestamps();
         });
     }

@@ -38,20 +38,38 @@
     <form id="myForm" method="POST" action="{{ route('subscriber.update.building') }}" enctype="multipart/form-data">
         @csrf
 
+        {{-- validation --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        {{-- validation --}}
+
         <input type="hidden" name="id" value="{{ $buildings->id }}">
 
       <div class="add-buildings">
 
            <div class="row mt-2">
-               <div class="form-group col-lg-6 add-buildings-inputs">
+               <div class="form-group col-lg-4 add-buildings-inputs">
                     <label for="">اسم العقار</label>
                     <input name="building_title" type="text" class="form-control" placeholder="الاسم" value="{{ $buildings->building_title }}">
                </div>
 
-               <div class="form-group col-lg-6 add-buildings-inputs">
+               <div class="form-group col-lg-4 add-buildings-inputs">
                   <label for="">العنوان</label>
                   <input name="building_location" type="text" class="form-control" placeholder="العنوان" value="{{ $buildings->building_location }}">
                </div>
+
+               <div class="form-group col-lg-4 add-buildings-inputs">
+                  <label for="">رقم الحارس</label>
+                   <input name="security_number" type="number" class="form-control" placeholder="رقم الحارس" value="{{ $buildings->security_number }}">
+               </div>
+
            </div>
 
            <div class="row mt-3">
@@ -135,7 +153,7 @@
 
             <div class="col-lg-4 add-buildings-inputs">
                 <label for="">حاله العقار</label>
-                <select name="building_avilability_status" id="">
+                <select name="building_avilability_status" class="availability-status" id="">
                      <option hidden class="option-title">حاله العقار</option>
                      <option value="bussy" {{ $buildings->building_avilability_status == 'bussy'  ? 'selected' : '' }}>مشغول</option>
                      <option value="empty" {{ $buildings->building_avilability_status == 'empty'  ? 'selected' : '' }}>خالي</option>
@@ -143,9 +161,9 @@
             </div>
 
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+            <div class="col-lg-4 add-buildings-inputs">
                 <label for="">القسم</label>
-                <select name="category_id" id="" required>
+                <select name="category_id" id="">
                      <option hidden class="option-title" value="">نوع القسم</option>
                      @foreach($categories as $category)
                        <option value="{{ $category->id }}" {{ $buildings->category_id == $category->id  ? 'selected' : '' }}>{{ $category->category_name }}</option>
@@ -153,7 +171,7 @@
                 </select>
             </div>
 
-            <div class="form-group col-lg-6 add-buildings-inputs">
+            <div class="col-lg-6 add-buildings-inputs">
                 <label for="">اسم المالك</label>
                 <select name="owner_id" id="">
                      <option hidden class="option-title">اسم المالك</option>
@@ -164,9 +182,9 @@
             </div>
 
 
-            <div class="form-group col-lg-6 add-buildings-inputs">
+            <div class="form-group col-lg-6 add-buildings-inputs tenant-select">
                 <label for="">اسم المشتري او المستاجر</label>
-                <select name="tenant_id" id="" required>
+                <select name="tenant_id"  id="" required>
                      <option hidden class="option-title"  value="">اسم المشتري او المستاجر</option>
                      @foreach($tenants as $tenant)
                        <option value="{{ $tenant->id }}" {{ $buildings->tenant_id == $tenant->id  ? 'selected' : '' }}>{{ $tenant->name }}</option>
@@ -208,12 +226,12 @@
 
 
            <div class="row mt-3">
-                <div class="form-group col-lg-4 add-buildings-inputs">
+                <div class="form-group col-lg-4 add-buildings-inputs contract-price-select">
                     <label for="">قيمه العقد</label>
                     <input name="contract_price" type="number" min="1" class="form-control" placeholder="القيمه" value="{{ $buildings->contract_price }}">
                 </div>
 
-                <div class="form-group col-lg-4 add-buildings-inputs">
+                <div class="form-group col-lg-4 add-buildings-inputs contract-date-select">
                     <label for=""> يوم تحصيل قيمة العقد</label>
                     <label style="width: 100%;">
                     <input name="contract_date" class="form-control" type="date" id="myDateInput"  style="width: 100%;" placeholder="اضغط للاختيار" value="{{ $buildings->contract_date }}" >
@@ -223,7 +241,7 @@
                 {{-- id="myDateInput" --}}
 
 
-                <div class="form-group col-lg-4 add-buildings-inputs">
+                <div class="form-group col-lg-4 add-buildings-inputs contract-long-select">
                     <label for="">مده العقد</label>
                     <input name="contract_longtime" type="text" class="form-control" placeholder=" مده العقد "  value="{{ $buildings->contract_longtime }}">
                 </div>
@@ -253,7 +271,7 @@
 
 
 
-                <div class="form-group col-lg-6 add-buildings-inputs">
+                <div class="form-group col-lg-6 add-buildings-inputs contract-photo-select">
                     <label>صوره العقد</label>
                     <div class="custom-file-upload">
                         <input type="file" id="contractimg" class="input-file" name="contract_img" onchange="previewImage2(event)">
@@ -508,25 +526,28 @@ dateFormat: 'Y/m/d', // Set your desired date format here
                 // building_cover_img: {
                 //     required : true,
                 // },
-                building_title: {
-                    required : true,
-                },
-                building_location: {
-                    required : true,
-                },
-                category_id: {
-                    required : true,
-                },
-                contract_price: {
-                    required : true,
-                },
-                contract_date: {
-                    required : true,
-                },
-                contract_longtime: {
-                    required : true,
-                },
-                tenant_id: {
+                // building_title: {
+                //     required : true,
+                // },
+                // building_location: {
+                //     required : true,
+                // },
+                // category_id: {
+                //     required : true,
+                // },
+                // contract_price: {
+                //     required : true,
+                // },
+                // contract_date: {
+                //     required : true,
+                // },
+                // contract_longtime: {
+                //     required : true,
+                // },
+                // tenant_id: {
+                //     required : true,
+                // },
+                building_avilability_status: {
                     required : true,
                 },
             },
@@ -534,26 +555,29 @@ dateFormat: 'Y/m/d', // Set your desired date format here
                 // building_cover_img: {
                 //     required : 'صوره العقار مطلوبه',
                 // },
-                building_title: {
-                    required : 'اسم العقار مطلوب',
-                },
-                building_location: {
-                    required : 'عنوان العقار مطلوب',
-                },
-                category_id: {
-                    required : 'اسم القسم مطلوب',
-                },
-                contract_price: {
-                    required : ' قيمه العقد مطلوب',
-                },
-                contract_date: {
-                    required : ' تاريخ التعاقد مطلوب',
-                },
-                contract_longtime: {
-                    required : ' مده التعاقد مطلوب',
-                },
-                tenant_id: {
-                    required : 'اسم المشتري او المستاجر مطلوب',
+                // building_title: {
+                //     required : 'اسم العقار مطلوب',
+                // },
+                // building_location: {
+                //     required : 'عنوان العقار مطلوب',
+                // },
+                // category_id: {
+                //     required : 'اسم القسم مطلوب',
+                // },
+                // contract_price: {
+                //     required : ' قيمه العقد مطلوب',
+                // },
+                // contract_date: {
+                //     required : ' تاريخ التعاقد مطلوب',
+                // },
+                // contract_longtime: {
+                //     required : ' مده التعاقد مطلوب',
+                // },
+                // tenant_id: {
+                //     required : 'اسم المشتري او المستاجر مطلوب',
+                // },
+                building_avilability_status: {
+                    required : 'حاله العقار مطلوبه',
                 },
             },
             errorElement : 'span',
@@ -638,7 +662,31 @@ dateFormat: 'Y/m/d', // Set your desired date format here
     }
 </script>
 
+<script>
+    $(document).ready(function() {
+        // Function to toggle visibility based on availability status
+        function toggleVisibility() {
+            // Check if the selected value is 'empty'
+            var isBuildingEmpty = $('.availability-status').val() === 'empty';
 
+            // Toggle visibility based on the status
+            $('.tenant-select').toggle(!isBuildingEmpty);
+            $('.contract-price-select').toggle(!isBuildingEmpty);
+            $('.contract-date-select').toggle(!isBuildingEmpty);
+            $('.contract-photo-select').toggle(!isBuildingEmpty);
+            $('.contract-long-select').toggle(!isBuildingEmpty);
+        }
+
+        // Listen for changes in the building_availability_status select
+        $('.availability-status').change(function() {
+            // Update visibility on change
+            toggleVisibility();
+        });
+
+        // Check visibility on page load
+        toggleVisibility();
+    });
+</script>
 
 
 

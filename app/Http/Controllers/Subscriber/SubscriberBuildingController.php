@@ -65,6 +65,40 @@ class SubscriberBuildingController extends Controller
     {
         DB::beginTransaction();
 
+        if($request->building_avilability_status === 'bussy')
+        {
+
+            //// Validate request
+            $validated = $request->validate([
+                'building_cover_img' => 'required',
+                'building_title' => 'required',
+                'building_location' => 'required',
+                'category_id' => 'required',
+                'contract_price' => 'required',
+                'contract_date' => 'required',
+                'contract_longtime' => 'required',
+                'tenant_id' => 'required',
+                'owner_id' => 'required',
+                'contract_img' => 'required',
+                'building_selling_status' => 'required',
+                'status' => 'required',
+            ], [
+                // Custom messages
+                'building_cover_img.required' => 'صوره العقار مطلوبه',
+                'building_title.required' => 'اسم العقار مطلوب',
+                'building_location.required' => 'عنوان العقار مطلوب',
+                'category_id.required' => 'اسم القسم مطلوب',
+                'contract_price.required' => ' قيمه العقد مطلوب',
+                'contract_date.required' => ' تاريخ التعاقد مطلوب',
+                'contract_longtime.required' => ' مده التعاقد مطلوب',
+                'tenant_id.required' => 'اسم المشتري او المستاجر مطلوب',
+                'owner_id.required' => 'اسم المالك مطلوب',
+                'contract_img.required' => 'صوره العقد مطلوبه',
+                'building_selling_status.required' => ' نوع العقار مطلوب',
+                'status.required' => ' حاله العقار مطلوب',
+            ]);
+
+
         try {
 
         // building cover image start //
@@ -87,6 +121,7 @@ class SubscriberBuildingController extends Controller
             'building_cover_img' => $save_url,
             'building_title' => $request->building_title,
             'building_location' => $request->building_location,
+            'security_number' => $request->security_number,
             'building_map' => $request->building_map,
             'category_id' => $request->category_id,
             'area' => $request->area,
@@ -192,7 +227,8 @@ class SubscriberBuildingController extends Controller
 
         return redirect()->route('subscriber.all.building')->with($notification);
 
-        } catch (\Exception $e) {
+        } //try end
+        catch (\Exception $e) {
             DB::rollback();
 
             return redirect()->back()->with([
@@ -200,6 +236,148 @@ class SubscriberBuildingController extends Controller
                 'alert-type' => 'error'
             ]);
         }
+    } //if end
+
+    else
+        {
+
+            //// Validate request
+            $validated = $request->validate([
+                'building_cover_img' => 'required',
+                'building_title' => 'required',
+                'building_location' => 'required',
+                'category_id' => 'required',
+                'owner_id' => 'required',
+                'building_selling_status' => 'required',
+                'status' => 'required',
+            ], [
+                // Custom messages
+                'building_cover_img.required' => 'صوره العقار مطلوبه',
+                'building_title.required' => 'اسم العقار مطلوب',
+                'building_location.required' => 'عنوان العقار مطلوب',
+                'category_id.required' => 'اسم القسم مطلوب',
+                'owner_id.required' => 'اسم المالك مطلوب',
+                'building_selling_status.required' => ' نوع العقار مطلوب',
+                'status.required' => ' حاله العقار مطلوب',
+            ]);
+
+            try {
+
+                // building cover image start //
+                    $image = $request->file('building_cover_img');
+                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('upload/subscriber_buildings/cover'),$name_gen);
+                    $save_url = 'upload/subscriber_buildings/cover/'.$name_gen;
+                // building cover image end //
+
+
+                $building_id = Building::insertGetId([
+
+                    'building_cover_img' => $save_url,
+                    'building_title' => $request->building_title,
+                    'building_location' => $request->building_location,
+                    'security_number' => $request->security_number,
+                    'building_map' => $request->building_map,
+                    'category_id' => $request->category_id,
+                    'area' => $request->area,
+                    'place' => $request->place,
+                    'rooms_num' => $request->rooms_num,
+                    'floor' => $request->floor,
+                    'floor_num' => $request->floor_num,
+                    'bathroom_num' => $request->bathroom_num,
+                    'building_size' => $request->building_size,
+                    'building_price' => $request->building_price,
+                    'building_selling_status' => $request->building_selling_status,
+                    'building_avilability_status' => $request->building_avilability_status,
+                    'wifi_status' => $request->wifi_status,
+                    'parking_status' => $request->parking_status,
+                    'building_desc' => $request->building_desc,
+                    'added_by' => Auth::user()->id,
+                    'notes' => $request->notes,
+                    'owner_id' => $request->owner_id,
+                    'tenant_id' => $request->tenant_id,
+                    'contract_price' => $request->contract_price,
+                    'contract_date' => $request->contract_date,
+                    'contract_longtime' => $request->contract_longtime,
+                    'status' => $request->status,
+                    'created_at'=>Carbon::now(),
+
+                ]);
+
+                /// Multiple Image Upload From her //////
+                if ($request->hasFile('multi_img'))
+                {
+                    $images = $request->file('multi_img');
+                    foreach($images as $img){
+                    $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+                    $img->move(public_path('upload/subscriber_buildings/multi-image/'),$make_name);
+                    $uploadPath = 'upload/subscriber_buildings/multi-image/'.$make_name;
+
+                    MultiImg::insert([
+                        'building_id' => $building_id,
+                        'photo_name' => $uploadPath,
+                    ]);
+                    } // end foreach
+                }
+
+                /// End Multiple Image Upload From her //////
+
+
+
+                /// Multiple video Upload From her //////
+                if ($request->hasFile('multi_vid'))
+                {
+                    $videos = $request->file('multi_vid');
+                    foreach($videos as $video){
+                    $make_name = hexdec(uniqid()).'.'.$video->getClientOriginalExtension();
+                    $video->move(public_path('upload/subscriber_buildings/multi-video/'),$make_name);
+                    $videoPath = 'upload/subscriber_buildings/multi-video/'.$make_name;
+
+                    MultiVideo::insert([
+                        'building_id' => $building_id,
+                        'video_name' => $videoPath,
+                    ]);
+                    } // end foreach
+                }
+
+                /// End Multiple video Upload From her //////
+
+
+                //start building-num for owner /////////////
+
+                $owner_count = Owner::find($request->owner_id);
+                if ($owner_count) {
+                    $buildingsCount = $owner_count->buildings()->count();
+                    $owner_count->update(['owner_building_num' => $buildingsCount]);
+                }
+                // end building-num for owner /////////////
+
+
+                DB::commit();
+
+                $notification = array(
+                    'message' => 'تم اضافه العقار بنجاح',
+                    'alert-type' => 'success'
+                );
+
+                $user = User::where('role','admin')->get();
+                $user_added = Auth::user();
+                Notification::send($user, new AddBuilding($user_added->name,$request->building_title));
+
+
+                return redirect()->route('subscriber.all.building')->with($notification);
+
+                } //try end
+                catch (\Exception $e) {
+                    DB::rollback();
+
+                    return redirect()->back()->with([
+                        'message' => 'حدث خطا اثناء الاضافه',
+                        'alert-type' => 'error'
+                    ]);
+                }
+
+        } // else end
 
     }//end method
 
@@ -242,6 +420,31 @@ class SubscriberBuildingController extends Controller
     public function UpdateBuilding(Request $request)
     {
         DB::beginTransaction();
+
+        if($request->building_avilability_status === 'bussy')
+        {
+
+            //// Validate request
+            $validated = $request->validate([
+                'building_title' => 'required',
+                'building_location' => 'required',
+                'category_id' => 'required',
+                'contract_price' => 'required',
+                'contract_date' => 'required',
+                'contract_longtime' => 'required',
+                'tenant_id' => 'required',
+                'owner_id' => 'required',
+            ], [
+                // Custom messages
+                'building_title.required' => 'اسم العقار مطلوب',
+                'building_location.required' => 'عنوان العقار مطلوب',
+                'category_id.required' => 'اسم القسم مطلوب',
+                'contract_price.required' => ' قيمه العقد مطلوب',
+                'contract_date.required' => ' تاريخ التعاقد مطلوب',
+                'contract_longtime.required' => ' مده التعاقد مطلوب',
+                'tenant_id.required' => 'اسم المشتري او المستاجر مطلوب',
+                'owner_id.required' => 'اسم المالك مطلوب',
+            ]);
 
         try {
 
@@ -399,18 +602,18 @@ class SubscriberBuildingController extends Controller
                 ]);
             }
         }
-        // else {
-        //     // No previous history records, insert into history table
-        //     History::insert([
-        //         'building_id' => $building->id,
-        //         'owner_id' => $building->tenant_id,
-        //         'contract_price' => $building->contract_price,
-        //         'contract_date' => $building->contract_date,
-        //         'contract_img' =>  $building->contract_img,
-        //         'contract_long' => $building->contract_longtime,
-        //         'created_at'=>Carbon::now(),
-        //     ]);
-        // }
+        else {
+            // No previous history records, insert into history table
+            History::insert([
+                'building_id' => $building->id,
+                'owner_id' => $building->tenant_id,
+                'contract_price' => $building->contract_price,
+                'contract_date' => $building->contract_date,
+                'contract_img' => isset($update_url_contract) ? $update_url_contract : $building->contract_img,
+                'contract_long' => $building->contract_longtime,
+                'created_at'=>Carbon::now(),
+            ]);
+        }
 
 
         //// check if there any change in owner id change the building_num in owners table
@@ -445,14 +648,240 @@ class SubscriberBuildingController extends Controller
 
         return redirect()->route('subscriber.all.building')->with($notification);
 
-        } catch (\Exception $e) {
-            DB::rollback();
+    } /// try end
+    catch (\Exception $e) {
+        // An error occurred; cancel the transaction...
+        DB::rollback();
 
-            return redirect()->back()->with([
-                'message' => 'حدث خطا اثناء التحديث',
-                'alert-type' => 'error'
-            ]);
+        // Return a redirect with an error message
+        return redirect()->route('all.building')->with([
+            'message' => 'حدث خطأ أثناء التحديث',
+            'alert-type' => 'error'
+        ]);
+    } /// catch end
+} // if end
+
+
+else
+{
+        //// Validate request
+        $validated = $request->validate([
+            'building_title' => 'required',
+            'building_location' => 'required',
+            'category_id' => 'required',
+            'owner_id' => 'required',
+        ], [
+            // Custom messages
+            'building_title.required' => 'اسم العقار مطلوب',
+            'building_location.required' => 'عنوان العقار مطلوب',
+            'category_id.required' => 'اسم القسم مطلوب',
+            'owner_id.required' => 'اسم المالك مطلوب',
+        ]);
+
+
+        try {
+
+            $building = Building::findOrFail($request->id);
+
+
+            $building->building_title = $request->building_title;
+            $building->building_location = $request->building_location;
+            $building->building_map = $request->building_map;
+            $building->category_id = $request->category_id;
+            $building->area = $request->area;
+            $building->place = $request->place;
+            $building->rooms_num = $request->rooms_num;
+            $building->floor = $request->floor;
+            $building->floor_num = $request->floor_num;
+            $building->bathroom_num = $request->bathroom_num;
+            $building->building_size = $request->building_size;
+            $building->building_price = $request->building_price;
+            $building->building_selling_status = $request->building_selling_status;
+            $building->building_avilability_status = $request->building_avilability_status;
+            $building->wifi_status = $request->wifi_status;
+            $building->parking_status = $request->parking_status;
+            $building->building_desc = $request->building_desc;
+            $building->notes = $request->notes;
+            // $building->owner_id = $request->owner_id;
+            $building->tenant_id = $request->tenant_id;
+            $building->contract_price = $request->contract_price;
+            $building->contract_date = $request->contract_date;
+            $building->contract_longtime = $request->contract_longtime;
+            $building->status = $request->status;
+
+
+
+
+        // Handle cover image update
+        if ($request->hasFile('building_cover_img'))
+        {
+            $file = $request->file('building_cover_img');
+            $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
+            $file->move(public_path('upload/subscriber_buildings/cover'), $filename);
+
+            // Remove previous building_cover_img if it exists
+            if ($building->building_cover_img && file_exists(public_path($building->building_cover_img))) {
+                unlink(public_path($building->building_cover_img));
+            }
+
+            $building->building_cover_img = 'upload/subscriber_buildings/cover/' . $filename;
         }
+
+
+        // Handle contract image update
+        if ($request->hasFile('contract_img'))
+        {
+            $file = $request->file('contract_img');
+            $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
+            $file->move(public_path('upload/subscriber_buildings/contract'), $filename);
+
+            // Remove previous contract_img if it exists
+            // if ($building->contract_img && file_exists(public_path($building->contract_img))) {
+            //     unlink(public_path($building->contract_img));
+            // }
+
+            $building->contract_img = 'upload/subscriber_buildings/contract/' . $filename;
+            $update_url_contract = 'upload/subscriber_buildings/contract/'.$filename;
+        }
+
+
+
+
+
+           /// Multiple Image Upload From her //////
+           if ($request->hasFile('multi_img'))
+           {
+               $images = $request->file('multi_img');
+               foreach($images as $img){
+               $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+               $img->move(public_path('upload/subscriber_buildings/multi-image/'),$make_name);
+               $uploadPath = 'upload/subscriber_buildings/multi-image/'.$make_name;
+
+               MultiImg::insert([
+                   'building_id' => $building->id,
+                   'photo_name' => $uploadPath,
+               ]);
+               } // end foreach
+           }
+
+           /// End Multiple Image Upload From her //////
+
+
+
+           /// Multiple video Upload From her //////
+           if ($request->hasFile('multi_vid'))
+           {
+               $videos = $request->file('multi_vid');
+               foreach($videos as $video){
+               $make_name = hexdec(uniqid()).'.'.$video->getClientOriginalExtension();
+               $video->move(public_path('upload/subscriber_buildings/multi-video/'),$make_name);
+               $videoPath = 'upload/subscriber_buildings/multi-video/'.$make_name;
+
+               MultiVideo::insert([
+                   'building_id' => $building->id,
+                   'video_name' => $videoPath,
+               ]);
+               } // end foreach
+           }
+
+           /// End Multiple video Upload From her //////
+
+
+        // $building->save();
+
+
+
+        //// check if there any change in contract date insert new record in history
+        $lastHistoryRecord = History::where('building_id', $building->id)->orderBy('created_at', 'desc')->first();
+
+        if ($lastHistoryRecord) {
+            $lastContractDate = new DateTime($lastHistoryRecord->contract_date);
+            $newContractDate = new DateTime($request->contract_date);
+
+            $lastDateString = $lastContractDate->format('Y-m-d');
+            $newDateString = $newContractDate->format('Y-m-d');
+
+        //   dd($lastDateString,$newDateString);
+
+
+            if ($lastDateString === $newDateString) {
+                // Do not insert into history table as the dates are the same
+            } else {
+
+                //// copy old contract image
+                $oldContractImagePath = public_path($building->contract_img);
+
+                if (file_exists($oldContractImagePath)) {
+                    // Generate a unique filename with timestamp:
+                    $filename = date('YmdHis') . '_' . basename($oldContractImagePath);
+                    $newContractImagePath = public_path('upload/subscriber_buildings/contract/' . $filename);
+
+                    if (copy($oldContractImagePath, $newContractImagePath)) {
+                        $building->contract_img = 'upload/subscriber_buildings/contract/' . $filename;
+                        // ... (update other related fields or variables as needed)
+                    }
+                }
+
+                // Insert into history table
+                History::insert([
+                    'building_id' => $building->id,
+                    'owner_id' => $building->tenant_id,
+                    'contract_price' => $building->contract_price,
+                    'contract_date' => $building->contract_date,
+                    // 'contract_img' => isset($update_url_contract) ? $update_url_contract : $building->contract_img,
+                    'contract_img' => isset($update_url_contract) ? $update_url_contract : $building->contract_img,
+                    'contract_long' => $building->contract_longtime,
+                    'created_at'=>Carbon::now(),
+                ]);
+            }
+        }
+
+
+        //// check if there any change in owner id change the building_num in owners table
+        $oldOwnerId = $building->owner_id;
+        $newOwnerId = $request->owner_id;
+
+        if ($oldOwnerId !== $newOwnerId) {
+            $oldOwner = Owner::find($oldOwnerId);
+            $newOwner = Owner::find($newOwnerId);
+
+            if ($oldOwner && $oldOwner->owner_building_num > 0) {
+                $oldOwner->decrement('owner_building_num');
+            }
+
+            if ($newOwner) {
+                $newOwner->increment('owner_building_num');
+            }
+        }
+
+
+            $building->owner_id = $request->owner_id;
+            $building->save();
+
+        // ////////////////////////////////////////////////////////////
+
+        DB::commit();
+
+        $notification = array(
+        'message' => 'تم تحديث معلومات المبني بنجاح',
+        'alert-type' => 'success'
+        );
+
+        return redirect()->route('subscriber.all.building')->with($notification);
+
+    } /// try end
+    catch (\Exception $e) {
+        // An error occurred; cancel the transaction...
+        DB::rollback();
+
+        // Return a redirect with an error message
+        return redirect()->route('all.building')->with([
+            'message' => 'حدث خطأ أثناء التحديث',
+            'alert-type' => 'error'
+        ]);
+    } /// catch end
+
+} //else end
 
     }//end method
 

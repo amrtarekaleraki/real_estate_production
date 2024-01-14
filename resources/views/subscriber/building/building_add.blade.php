@@ -38,34 +38,53 @@
     <form id="myForm" method="POST" action="{{ route('subscriber.store.building') }}" enctype="multipart/form-data">
         @csrf
 
+            {{-- validation --}}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+            {{-- validation --}}
+
+
       <div class="add-buildings">
 
            <div class="row mt-2">
-               <div class="form-group col-lg-6 add-buildings-inputs">
+               <div class="form-group col-lg-4 add-buildings-inputs">
                     <label for="">اسم العقار</label>
-                    <input name="building_title" type="text" class="form-control" placeholder="الاسم">
+                    <input name="building_title" type="text" class="form-control" placeholder="الاسم" value="{{ old('building_title') }}">
                </div>
 
-               <div class="form-group col-lg-6 add-buildings-inputs">
+               <div class="form-group col-lg-4 add-buildings-inputs">
                   <label for="">العنوان</label>
-                  <input name="building_location" type="text" class="form-control" placeholder="العنوان">
+                  <input name="building_location" type="text" class="form-control" placeholder="العنوان" value="{{ old('building_location') }}">
                </div>
+
+               <div class="form-group col-lg-4 add-buildings-inputs">
+                   <label for="">رقم الحارس</label>
+                  <input name="security_number" type="number" class="form-control" placeholder="رقم الحارس" value="{{ old('security_number') }}">
+              </div>
+
            </div>
 
            <div class="row mt-3">
                 <div class="col-lg-4 add-buildings-inputs">
                     <label for="">المنطقه</label>
-                    <input name="area" type="text" placeholder="اسم المنطقه">
+                    <input name="area" type="text" placeholder="اسم المنطقه" value="{{ old('area') }}">
                 </div>
 
                 <div class="col-lg-4 add-buildings-inputs">
                     <label for="">القطعه</label>
-                    <input name="place" type="text" placeholder="القطعه">
+                    <input name="place" type="text" placeholder="القطعه" value="{{ old('place') }}">
                 </div>
 
                 <div class="col-lg-4 add-buildings-inputs">
                     <label for="">العنوان علي الخريطه</label>
-                    <input name="building_map" type="text" class="form-control" placeholder="العنوان علي الخريطه">
+                    <input name="building_map" type="text" class="form-control" placeholder="العنوان علي الخريطه"  value="{{ old('building_map') }}">
                  </div>
            </div>
 
@@ -79,43 +98,43 @@
            <div class="row mt-3">
             <div class="col-lg-4 add-buildings-inputs">
                  <label for="">المساحه الكليه (متر)</label>
-                 <input name="building_size" type="number" min="1" placeholder=" المساحه">
+                 <input name="building_size" type="number" min="1" placeholder=" المساحه" value="{{ old('building_size') }}">
             </div>
 
             <div class="col-lg-4 add-buildings-inputs">
                 <label for="">السعر (دينار)</label>
-                <input name="building_price" type="number" min="1" placeholder="السعر">
+                <input name="building_price" type="number" min="1" placeholder="السعر" value="{{ old('building_price') }}">
            </div>
 
 
            <div class="col-lg-4 add-buildings-inputs">
             <label for="">عدد الغرف</label>
-            <input name="rooms_num" type="number" min="1" placeholder="العدد">
+            <input name="rooms_num" type="number" min="1" placeholder="العدد" value="{{ old('rooms_num') }}">
            </div>
            </div>
 
            <div class="row mt-3">
             <div class="col-lg-4 add-buildings-inputs">
                  <label for="">الحمامات</label>
-                 <input name="bathroom_num" type="number" min="1" placeholder=" العدد">
+                 <input name="bathroom_num" type="number" min="1" placeholder=" العدد" value="{{ old('bathroom_num') }}">
             </div>
 
             <div class="col-lg-4 add-buildings-inputs">
                 <label for="">الدور</label>
-                <input name="floor" type="number" min="1" placeholder="العدد">
+                <input name="floor" type="number" min="1" placeholder="العدد" value="{{ old('floor') }}">
            </div>
 
 
            <div class="col-lg-4 add-buildings-inputs">
             <label for="">عدد الادوار المتاحه</label>
-            <input name="floor_num" type="number" min="1" placeholder="العدد">
+            <input name="floor_num" type="number" min="1" placeholder="العدد" value="{{ old('floor_num') }}">
            </div>
            </div>
 
            <div class="row mt-3">
             <div class="col-lg-12 add-buildings-inputs">
                  <label for="">ملاحظات</label>
-                 <input name="notes" type="text" placeholder="ملاحظات">
+                 <input name="notes" type="text" placeholder="ملاحظات" value="{{ old('notes') }}">
             </div>
 
            <div class="row mt-3">
@@ -123,50 +142,50 @@
             <div class="col-lg-4 add-buildings-inputs">
                 <label for="">نوع العقار</label>
                 <select name="building_selling_status" id="">
-                     <option hidden class="option-title">نوع العقار</option>
-                     <option value="rent">إيجار</option>
-                     <option value="sell">بيع</option>
+                    <option hidden class="option-title" value="">نوع العقار</option>
+                    <option value="rent" @if(old('building_selling_status') == 'rent') selected @endif>إيجار</option>
+                    <option value="sell" @if(old('building_selling_status') == 'sell') selected @endif>بيع</option>
                 </select>
             </div>
-
-            <div class="col-lg-4 add-buildings-inputs">
-                <label for="">حاله العقار</label>
-                <select name="building_avilability_status" id="">
-                     <option hidden class="option-title">حاله العقار</option>
-                     <option value="bussy">مشغول</option>
-                     <option value="empty">خالي</option>
-                </select>
-            </div>
-
 
             <div class="form-group col-lg-4 add-buildings-inputs">
+                <label for="">حاله العقار</label>
+                <select name="building_avilability_status" class="availability-status" id="" required>
+                    <option hidden class="option-title" value="">حاله العقار</option>
+                    <option value="bussy" @if(old('building_avilability_status') == 'bussy') selected @endif>مشغول</option>
+                    <option value="empty" @if(old('building_avilability_status') == 'empty') selected @endif>خالي</option>
+                </select>
+            </div>
+
+
+            <div class="col-lg-4 add-buildings-inputs">
                 <label for="">القسم</label>
-                <select name="category_id" id="" required>
-                     <option hidden class="option-title" value="">نوع القسم</option>
-                     @foreach($categories as $category)
-                       <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                     @endforeach
+                <select name="category_id" id="">
+                    <option hidden class="option-title" value="">نوع القسم</option>
+                    @foreach($categories as $category)
+                      <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected @endif>{{ $category->category_name }}</option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="form-group col-lg-6 add-buildings-inputs">
                 <label for="">اسم المالك</label>
                 <select name="owner_id" id="">
-                     <option hidden class="option-title">اسم المالك</option>
-                     @foreach($owners as $owner)
-                       <option value="{{ $owner->id }}">{{ $owner->name }}</option>
-                     @endforeach
+                    <option hidden class="option-title" value="">اسم المالك</option>
+                    @foreach($owners as $owner)
+                      <option value="{{ $owner->id }}" @if(old('owner_id') == $owner->id) selected @endif>{{ $owner->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
 
-            <div class="form-group col-lg-6 add-buildings-inputs">
+            <div class="col-lg-6 add-buildings-inputs tenant-select">
                 <label for="">اسم المشتري او المستاجر</label>
-                <select name="tenant_id" id="" required>
-                     <option hidden class="option-title"  value="">اسم المشتري او المستاجر</option>
-                     @foreach($tenants as $tenant)
-                       <option value="{{ $tenant->id }}">{{ $tenant->name }}</option>
-                     @endforeach
+                <select name="tenant_id" id="">
+                    <option hidden class="option-title"  value="">اسم المشتري او المستاجر</option>
+                    @foreach($tenants as $tenant)
+                      <option value="{{ $tenant->id }}" @if(old('tenant_id') == $tenant->id) selected @endif>{{ $tenant->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -183,9 +202,9 @@
             <div class="form-group col-lg-4 add-buildings-inputs">
                 <label for="">حاله الجراج</label>
                 <select name="parking_status" id="">
-                     <option hidden class="option-title">حاله الجراج</option>
-                     <option value="yes">يوجد</option>
-                     <option value="no">لا يوجد</option>
+                    <option hidden class="option-title" value="">حاله الجراج</option>
+                    <option value="yes" @if(old('parking_status') == 'yes') selected @endif>يوجد</option>
+                    <option value="no" @if(old('parking_status') == 'no') selected @endif>لا يوجد</option>
                 </select>
             </div>
 
@@ -193,16 +212,16 @@
             <div class="form-group col-lg-4 add-buildings-inputs">
                 <label for="">حاله العقار</label>
                 <select name="status" id="">
-                    <option hidden class="option-title">حاله العقار</option>
-                    <option value="active">مفعل</option>
-                    <option value="inactive">غير مفعل</option>
+                    <option hidden class="option-title" value="">حاله العقار</option>
+                    <option value="active" @if(old('status') == 'active') selected @endif>مفعل</option>
+                    <option value="inactive" @if(old('status') == 'inactive') selected @endif>غير مفعل</option>
                 </select>
             </div>
 
 
-            <div class="form-group col-lg-4 add-buildings-inputs">
+              <div class="form-group col-lg-6 add-buildings-inputs">
                 <label for="">صوره الغلاف</label>
-                <label for="cover-count" class="custom-file-upload">
+                <label for="coverImg" class="custom-file-upload">
                   <input  type="file" id="coverImg" class="input-file" name="building_cover_img"  onchange="showFileCount(this, 'cover-count')">
                   <span class="custom-file-upload-svg">
                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
@@ -263,31 +282,31 @@
 
            <div class="row mt-3">
 
-                <div class="form-group col-lg-4 add-buildings-inputs">
+                <div class="form-group col-lg-4 add-buildings-inputs contract-price-select">
                     <label for="">قيمه العقد</label>
-                    <input name="contract_price" type="number" min="1" class="form-control" placeholder="القيمه">
+                    <input name="contract_price" type="number" min="1" class="form-control" placeholder="القيمه" value="{{ old('contract_price') }}">
                 </div>
 
-                <div class="form-group col-lg-4 add-buildings-inputs">
+                <div class="form-group col-lg-4 add-buildings-inputs contract-date-select">
                     <label for=""> يوم تحصيل قيمة العقد</label>
                     <label style="width: 100%;">
-                      <input name="contract_date" class="form-control" type="date" id="myDateInput"  style="width: 100%;"   placeholder="اضغط للاختيار" >
+                      <input name="contract_date" class="form-control" type="date" id="myDateInput"  style="width: 100%;"   placeholder="اضغط للاختيار" value="{{ old('contract_date') }}">
                     </label>
                 </div>
 
                 {{-- id="myDateInput" --}}
 
 
-                <div class="form-group col-lg-4 add-buildings-inputs">
+                <div class="form-group col-lg-4 add-buildings-inputs contract-long-select">
                     <label for="">مده العقد</label>
-                    <input name="contract_longtime" type="text" class="form-control" placeholder=" مده العقد ">
+                    <input name="contract_longtime" type="text" class="form-control" placeholder=" مده العقد " value="{{ old('contract_longtime') }}">
                 </div>
 
            </div>
 
 
            <div class="row mt-3">
-               <div class="form-group col-lg-12 add-buildings-inputs">
+               <div class="form-group col-lg-12 add-buildings-inputs contract-photo-select">
                 <label for="">صوره العقد</label>
                 <label for="contract-file" class="custom-file-upload">
                   <input name="contract_img" type="file" id="contract-file" class="contract-file form-control"  onchange="showFileCount(this, 'contract-count')">
@@ -354,55 +373,61 @@ dateFormat: 'Y/m/d', // Set your desired date format here
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                building_cover_img: {
-                    required : true,
-                },
-                building_title: {
-                    required : true,
-                },
-                building_location: {
-                    required : true,
-                },
-                category_id: {
-                    required : true,
-                },
-                contract_price: {
-                    required : true,
-                },
-                contract_date: {
-                    required : true,
-                },
-                contract_longtime: {
-                    required : true,
-                },
-                tenant_id: {
+                // building_cover_img: {
+                //     required : true,
+                // },
+                // building_title: {
+                //     required : true,
+                // },
+                // building_location: {
+                //     required : true,
+                // },
+                // category_id: {
+                //     required : true,
+                // },
+                // contract_price: {
+                //     required : true,
+                // },
+                // contract_date: {
+                //     required : true,
+                // },
+                // contract_longtime: {
+                //     required : true,
+                // },
+                // tenant_id: {
+                //     required : true,
+                // },
+                building_avilability_status: {
                     required : true,
                 },
             },
             messages :{
-                building_cover_img: {
-                    required : 'صوره العقار مطلوبه',
-                },
-                building_title: {
-                    required : 'اسم العقار مطلوب',
-                },
-                building_location: {
-                    required : 'عنوان العقار مطلوب',
-                },
-                category_id: {
-                    required : 'اسم القسم مطلوب',
-                },
-                contract_price: {
-                    required : ' قيمه العقد مطلوب',
-                },
-                contract_date: {
-                    required : ' تاريخ التعاقد مطلوب',
-                },
-                contract_longtime: {
-                    required : ' مده التعاقد مطلوب',
-                },
-                tenant_id: {
-                    required : 'اسم المشتري او المستاجر مطلوب',
+                // building_cover_img: {
+                //     required : 'صوره العقار مطلوبه',
+                // },
+                // building_title: {
+                //     required : 'اسم العقار مطلوب',
+                // },
+                // building_location: {
+                //     required : 'عنوان العقار مطلوب',
+                // },
+                // category_id: {
+                //     required : 'اسم القسم مطلوب',
+                // },
+                // contract_price: {
+                //     required : ' قيمه العقد مطلوب',
+                // },
+                // contract_date: {
+                //     required : ' تاريخ التعاقد مطلوب',
+                // },
+                // contract_longtime: {
+                //     required : ' مده التعاقد مطلوب',
+                // },
+                // tenant_id: {
+                //     required : 'اسم المشتري او المستاجر مطلوب',
+                // },
+                building_avilability_status: {
+                    required : 'حاله العقار مطلوبه',
                 },
             },
             errorElement : 'span',
@@ -450,8 +475,34 @@ dateFormat: 'Y/m/d', // Set your desired date format here
      });
     });
 
-    </script>
+</script>
 
+
+<script>
+    $(document).ready(function() {
+        // Function to toggle visibility based on availability status
+        function toggleVisibility() {
+            // Check if the selected value is 'empty'
+            var isBuildingEmpty = $('.availability-status').val() === 'empty';
+
+            // Toggle visibility based on the status
+            $('.tenant-select').toggle(!isBuildingEmpty);
+            $('.contract-price-select').toggle(!isBuildingEmpty);
+            $('.contract-date-select').toggle(!isBuildingEmpty);
+            $('.contract-photo-select').toggle(!isBuildingEmpty);
+            $('.contract-long-select').toggle(!isBuildingEmpty);
+        }
+
+        // Listen for changes in the building_availability_status select
+        $('.availability-status').change(function() {
+            // Update visibility on change
+            toggleVisibility();
+        });
+
+        // Check visibility on page load
+        toggleVisibility();
+    });
+</script>
 
 
 @endsection
