@@ -8,6 +8,7 @@ use App\Models\Building;
 use App\Models\Category;
 use App\Models\History;
 use App\Models\Owner;
+use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -327,5 +328,70 @@ class SubscriberController extends Controller
         return Excel::download(new SubscriberBuildingExport(), 'العقارات.xlsx' );
     }
 
+
+
+    // setings ///////////
+    public function AllSettings()
+    {
+        $user_id = Auth::user()->id;
+
+        $settings = Setting::where('added_by', $user_id)->get();
+
+        return view('subscriber.setting.all_setting', compact('settings'));
+    }
+
+    public function AddSettings()
+    {
+        return view('subscriber.setting.add_setting');
+    }
+
+    public function StoreSettings(Request $request)
+    {
+        Setting::insert([
+            'name' => $request->name,
+            'location' => $request->location,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'added_by' => Auth::user()->id,
+        ]);
+
+       $notification = array(
+            'message' => 'تم اضافه الاعدادات بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('subscriber.all.settings')->with($notification);
+    }
+
+    public function EditSettings($id)
+    {
+        $user_id = Auth::user()->id;
+
+        $setting = Setting::where('added_by', $user_id)->findOrFail($id);
+        return view('subscriber.setting.edit_setting',compact('setting'));
+    }
+
+
+    public function SettingsUpdate(Request $request)
+    {
+            $setting_id = $request->id;
+            $user_id = Auth::user()->id;
+
+            Setting::where('added_by', $user_id)->findOrFail($setting_id)->update([
+            'name' => $request->name,
+            'location' => $request->location,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'added_by' => Auth::user()->id,
+        ]);
+
+       $notification = array(
+            'message' => 'تم تحديث الاعدادات بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('subscriber.all.settings')->with($notification);
+
+    }
 
 }

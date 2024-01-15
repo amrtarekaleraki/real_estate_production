@@ -296,6 +296,16 @@ Route::middleware(['auth','role:subscriber'])->group(function () {
         });
 
 
+        ///////  Settings All Route
+        Route::controller(SubscriberController::class)->group(function(){
+            Route::get('subscriber/all/settings' , 'AllSettings')->name('subscriber.all.settings');
+            Route::get('subscriber/add/settings' , 'AddSettings')->name('subscriber.add.settings');
+            Route::post('subscriber/store/settings' , 'StoreSettings')->name('subscriber.store.settings');
+            Route::get('subscriber/edit/settings/{id}' , 'EditSettings')->name('subscriber.edit.settings');
+            Route::post('subscriber/update/settings' , 'SettingsUpdate')->name('subscriber.settings.update');
+        });
+
+
 
 });
 

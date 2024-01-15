@@ -721,7 +721,11 @@ class AdminController extends Controller
 
     public function AllSettings()
     {
-        $settings = Setting::latest()->get();
+        $settings = Setting::join('users', 'settings.added_by', '=', 'users.id')
+                    ->where('users.role', 'admin')
+                    ->select('settings.*') // Select the columns you need from the settings table
+                    ->get();
+        // $settings = Setting::latest()->get();
         return view('backend.setting.all_setting',compact('settings'));
     }
 

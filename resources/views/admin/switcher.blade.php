@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--favicon-->
     @php
-        $settings = App\Models\Setting::latest()->get();
+        // $settings = App\Models\Setting::latest()->get();
+        $settings = App\Models\Setting::join('users', 'settings.added_by', '=', 'users.id')
+                    ->where('users.role', 'admin')
+                    ->select('settings.*') // Select the columns you need from the settings table
+                    ->get();
     @endphp
 
     @foreach ($settings as $item)
@@ -52,7 +56,11 @@
                 <div>
 
                 @php
-                    $settings = App\Models\Setting::latest()->get();
+                    // $settings = App\Models\Setting::latest()->get();
+                    $settings = App\Models\Setting::join('users', 'settings.added_by', '=', 'users.id')
+                    ->where('users.role', 'admin')
+                    ->select('settings.*') // Select the columns you need from the settings table
+                    ->get();
                 @endphp
 
                 @foreach ($settings as $item)

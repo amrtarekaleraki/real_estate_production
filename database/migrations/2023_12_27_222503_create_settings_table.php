@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('logo');
-            $table->string('favicon');
+            $table->string('logo')->nullable();
+            $table->string('favicon')->nullable();
+            $table->integer('added_by')->nullable();
             $table->timestamps();
         });
     }

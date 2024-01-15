@@ -5,7 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @php
-        $settings = App\Models\Setting::latest()->get();
+        // $settings = App\Models\Setting::latest()->get();
+        $settings = App\Models\Setting::join('users', 'settings.added_by', '=', 'users.id')
+                    ->where('users.role', 'admin')
+                    ->select('settings.*') // Select the columns you need from the settings table
+                    ->get();
     @endphp
 
     @foreach ($settings as $item)
@@ -50,7 +54,11 @@
                 <div>
 
                 @php
-                    $settings = App\Models\Setting::latest()->get();
+                    // $settings = App\Models\Setting::latest()->get();
+                    $settings = App\Models\Setting::join('users', 'settings.added_by', '=', 'users.id')
+                    ->where('users.role', 'admin')
+                    ->select('settings.*') // Select the columns you need from the settings table
+                    ->get();
                 @endphp
 
                 @foreach ($settings as $item)
@@ -126,6 +134,16 @@
                             <a href="{{ route('subscriber.all.report') }}"><i class="bx bx-left-arrow-alt"></i>جميع التقارير و الاحصائيات</a>
                         </li>
                     </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('subscriber.all.settings') }}">
+                        <div class="parent-icon">
+                            <img src="{{ asset('adminbackend/assets/images/new/settings-icon.png') }}"
+                                alt="">
+                        </div>
+                        <div class="menu-title">الاعدادات</div>
+                    </a>
                 </li>
 
 

@@ -12,7 +12,7 @@
                 <table  class="table table-striped table-bordered" style="width:100%">
                     <thead>
 <tr>
-    <th>رقم التسلسل</th>
+    {{-- <th>رقم التسلسل</th> --}}
     <th>اسم الشركه</th>
     <th>الموقع</th>
     <th>البريد الالكتروني</th>
@@ -25,8 +25,9 @@
 <tbody>
 @foreach($settings as $key => $item)
 <tr style="vertical-align: middle;">
-    <td> {{ $key+1 }} </td>
+    {{-- <td> {{ $key+1 }} </td> --}}
     <td>{{ $item->name }}</td>
+    {{-- <td><a href="{{ $item->location }}" style="color: #1B1B1B;">{{ $item->location }}</a></td> --}}
     <td>{{ $item->location }}</td>
     <td>{{ $item->email }}</td>
     <td>{{ $item->phone }}</td>
