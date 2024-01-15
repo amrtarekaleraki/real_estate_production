@@ -46,7 +46,7 @@
                             @foreach ($settings as $item)
                               <img src="{{ asset($item->logo) }}" class="logo-icon" alt="logo icon" />
                             @endforeach --}}
-                                <img src="{{ asset('adminbackend/assets/images/new/logo3.png')}}">
+                                <img src="{{ asset('adminbackend/assets/images/new/logo1.png')}}">
 								<h2>تسجيل دخول المشتركين</h2>
 							</div>
 
@@ -101,7 +101,7 @@
 
 
 						 <div class="col-lg-8 login-img">
-                            <img src="{{ asset('adminbackend/assets/images/new/login-img.png')}}" alt="">
+                            <img src="{{ asset('adminbackend/assets/images/new/login-1.png')}}" alt="">
 						</div>
 
 					 </div>
