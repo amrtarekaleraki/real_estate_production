@@ -33,7 +33,7 @@ class CheckSubscriptionStatus extends Command
      */
     public function handle()
     {
-        info('cron run');
+        info('cron start');
 
         $users = User::where('role', 'subscriber')->whereNotNull('subscribe_time')->get();
 
