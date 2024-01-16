@@ -16,6 +16,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('check:subscription-status')->daily();
+        $schedule->call(function () {
+            info('Schedule run');
+        })->everyMinute();
     }
 
     /**
